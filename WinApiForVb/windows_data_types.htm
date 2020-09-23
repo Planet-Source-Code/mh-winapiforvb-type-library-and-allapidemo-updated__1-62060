@@ -1,0 +1,1394 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Windows Data Types</title>
+</head>
+
+<body>
+
+<h1>Windows Data Types</h1>
+<p>The data types supported by Microsoft® Windows® are used to define function
+return values, function and message parameters, and structure members. They
+define the size and meaning of these elements.</p>
+<p>&nbsp;
+<p>The following table contains the following types: character, integer,
+Boolean, pointer, and handle. The character, integer, and Boolean types are
+common to most C compilers. Most of the pointer-type names begin with a prefix
+of P or LP. Handles refer to a resource that has been loaded into memory.</p>
+<p>For more information about handling 64-bit integers, see <a href="http://msdn.microsoft.com/library/en-us/winprog/winprog/large_integers.asp">Large
+Integers</a>.</p>
+<p>&nbsp;</p>
+<table class="data">
+  <tbody>
+    <tr class="data">
+      <th>Term</th>
+      <th>Description</th>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>ATOM</b></td>
+      <td class="data">Atom. For more information, see <a href="http://msdn.microsoft.com/library/en-us/winui/winui/windowsuserinterface/dataexchange/atoms.asp">Atoms</a>.
+        <p>This type is declared in Windef.h as follows:
+        <pre xml:space="preserve">typedef WORD ATOM;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>BOOL</b></td>
+      <td class="data">Boolean variable (should be TRUE or FALSE).
+        <p>This type is declared in Windef.h as follows:
+        <pre xml:space="preserve">typedef int BOOL;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>BOOLEAN</b></td>
+      <td class="data">Boolean variable (should be TRUE or FALSE).
+        <p>This type is declared in Winnt.h as follows:
+        <pre xml:space="preserve">typedef BYTE BOOLEAN;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>BYTE</b></td>
+      <td class="data">Byte (8 bits).
+        <p>This type is declared in Windef.h as follows:
+        <pre xml:space="preserve">typedef unsigned char BYTE;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>CALLBACK</b></td>
+      <td class="data">Calling convention for callback functions.
+        <p>This type is declared in Windef.h as follows:
+        <pre xml:space="preserve">#define CALLBACK __stdcall</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>CHAR</b></td>
+      <td class="data">8-bit Windows (ANSI) character. For more information, see
+        <a href="http://msdn.microsoft.com/library/en-us/gdi/fontext_89gz.asp">Character
+        Sets Used By Fonts</a>.
+        <p>This type is declared in Winnt.h as follows:
+        <pre xml:space="preserve">typedef char CHAR;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>COLORREF</b></td>
+      <td class="data">Red, green, blue (RGB) color value (32 bits). See <a href="http://msdn.microsoft.com/library/en-us/gdi/colors_9xiq.asp">COLORREF</a>
+        for information on this type.
+        <p>This type is declared in Windef.h as follows:
+        <pre xml:space="preserve">typedef DWORD COLORREF;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>CONST</b></td>
+      <td class="data">Variable whose value is to remain constant during
+        execution.
+        <p>This type is declared in Windef.h as follows:
+        <pre xml:space="preserve">#define CONST const</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>DWORD</b></td>
+      <td class="data">32-bit unsigned integer.
+        <p>This type is declared in Windef.h as follows:
+        <pre xml:space="preserve">typedef unsigned long DWORD;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>DWORDLONG</b></td>
+      <td class="data">64-bit unsigned integer.
+        <p>This type is declared in Winnt.h as follows:
+        <pre xml:space="preserve">typedef ULONGLONG DWORDLONG;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>DWORD_PTR</b></td>
+      <td class="data">Unsigned long type for pointer precision. Use when
+        casting a pointer to a long type to perform pointer arithmetic. (Also
+        commonly used for general 32-bit parameters that have been extended to
+        64 bits in 64-bit Windows. )
+        <p>This type is declared in Basetsd.h as follows:
+        <pre xml:space="preserve">typedef ULONG_PTR DWORD_PTR;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>DWORD32</b></td>
+      <td class="data">32-bit unsigned integer.
+        <p>This type is declared in Basetsd.h as follows:
+        <pre xml:space="preserve">typedef unsigned int DWORD32;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>DWORD64</b></td>
+      <td class="data">64-bit unsigned integer.
+        <p>This type is declared in Basetsd.h as follows:
+        <pre xml:space="preserve">typedef unsigned __int64 DWORD64;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>FLOAT</b></td>
+      <td class="data">Floating-point variable.
+        <p>This type is declared in Windef.h as follows:
+        <pre xml:space="preserve">typedef float FLOAT;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>HACCEL</b></td>
+      <td class="data">Handle to an <a href="http://msdn.microsoft.com/library/en-us/winui/winui/windowsuserinterface/userinput/keyboardaccelerators.asp">accelerator
+        table</a>.
+        <p>This type is declared in Windef.h as follows:
+        <pre xml:space="preserve">typedef HANDLE HACCEL;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>HANDLE</b></td>
+      <td class="data">Handle to an object.
+        <p>This type is declared in Winnt.h as follows:
+        <pre xml:space="preserve">typedef PVOID HANDLE;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>HBITMAP</b></td>
+      <td class="data">Handle to a <a href="http://msdn.microsoft.com/library/en-us/gdi/bitmaps_99ir.asp">bitmap</a>.
+        <p>This type is declared in Windef.h as follows:
+        <pre xml:space="preserve">typedef HANDLE HBITMAP;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>HBRUSH</b></td>
+      <td class="data">Handle to a <a href="http://msdn.microsoft.com/library/en-us/gdi/brushes_9ak3.asp">brush</a>.
+        <p>This type is declared in Windef.h as follows:
+        <pre xml:space="preserve">typedef HANDLE HBRUSH;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>HCOLORSPACE</b></td>
+      <td class="data">Handle to a <a href="http://msdn.microsoft.com/library/en-us/icm/icm_2lo3.asp">color
+        space</a>.
+        <p>This type is declared in Windef.h as follows:
+        <pre xml:space="preserve">if(WINVER &gt;= 0x0400)
+typedef HANDLE HCOLORSPACE;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>HCONV</b></td>
+      <td class="data">Handle to a dynamic data exchange (DDE) conversation.
+        <p>This type is declared in Ddeml.h as follows:
+        <pre xml:space="preserve">typedef HANDLE HCONV;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>HCONVLIST</b></td>
+      <td class="data">Handle to a DDE conversation list.
+        <p>This type is declared in Ddeml.h as follows:
+        <pre xml:space="preserve">typedef HANDLE HCONVLIST;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>HCURSOR</b></td>
+      <td class="data">Handle to a <a href="http://msdn.microsoft.com/library/en-us/winui/winui/windowsuserinterface/resources/cursors.asp">cursor</a>.
+        <p>This type is declared in Windef.h as follows:
+        <pre xml:space="preserve">typedef HICON HCURSOR;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>HDC</b></td>
+      <td class="data">Handle to a <a href="http://msdn.microsoft.com/library/en-us/gdi/devcons_0g6r.asp">device
+        context</a> (DC).
+        <p>This type is declared in Windef.h as follows:
+        <pre xml:space="preserve">typedef HANDLE HDC;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>HDDEDATA</b></td>
+      <td class="data">Handle to DDE data.
+        <p>This type is declared in Ddeml.h as follows:
+        <pre xml:space="preserve">typedef HANDLE HDDEDATA;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>HDESK</b></td>
+      <td class="data">Handle to a <a href="http://msdn.microsoft.com/library/en-us/dllproc/base/desktops.asp">desktop</a>.
+        <p>This type is declared in Windef.h as follows:
+        <pre xml:space="preserve">typedef HANDLE HDESK;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>HDROP</b></td>
+      <td class="data">Handle to an internal drop structure.
+        <p>This type is declared in Shellapi.h as follows:
+        <pre xml:space="preserve">typedef HANDLE HDROP;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>HDWP</b></td>
+      <td class="data">Handle to a deferred window position structure.
+        <p>This type is declared in Winuser.h as follows:
+        <pre xml:space="preserve">typedef HANDLE HDWP;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>HENHMETAFILE</b></td>
+      <td class="data">Handle to an <a href="http://msdn.microsoft.com/library/en-us/gdi/metafile_7ulv.asp">enhanced
+        metafile</a>.
+        <p>This type is declared in Windef.h as follows:
+        <pre xml:space="preserve">typedef HANDLE HENHMETAFILE;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>HFILE</b></td>
+      <td class="data">Handle to a file opened by <a href="http://msdn.microsoft.com/library/en-us/fileio/base/openfile.asp"><b>OpenFile</b></a>,
+        not <a href="http://msdn.microsoft.com/library/en-us/fileio/base/createfile.asp"><b>CreateFile</b></a>.
+        <p>This type is declared in Windef.h as follows:
+        <pre xml:space="preserve">typedef int HFILE;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>HFONT</b></td>
+      <td class="data">Handle to a <a href="http://msdn.microsoft.com/library/en-us/gdi/fontext_8ctw.asp">font</a>.
+        <p>This type is declared in Windef.h as follows:
+        <pre xml:space="preserve">typedef HANDLE HFONT;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>HGDIOBJ</b></td>
+      <td class="data">Handle to a GDI object.
+        <p>This type is declared in Windef.h as follows:
+        <pre xml:space="preserve">typedef HANDLE HGDIOBJ;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>HGLOBAL</b></td>
+      <td class="data">Handle to a global memory block.
+        <p>This type is declared in Windef.h as follows:
+        <pre xml:space="preserve">typedef HANDLE HGLOBAL;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>HHOOK</b></td>
+      <td class="data">Handle to a <a href="http://msdn.microsoft.com/library/en-us/winui/winui/windowsuserinterface/windowing/hooks.asp">hook</a>.
+        <p>This type is declared in Windef.h as follows:
+        <pre xml:space="preserve">typedef HANDLE HHOOK;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>HICON</b></td>
+      <td class="data">Handle to an <a href="http://msdn.microsoft.com/library/en-us/winui/winui/windowsuserinterface/resources/icons.asp">icon</a>.
+        <p>This type is declared in Windef.h as follows:
+        <pre xml:space="preserve">typedef HANDLE HICON;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>HINSTANCE</b></td>
+      <td class="data">Handle to an instance.
+        <p>This type is declared in Windef.h as follows:
+        <pre xml:space="preserve">typedef HANDLE HINSTANCE;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>HKEY</b></td>
+      <td class="data">Handle to a registry key.
+        <p>This type is declared in Windef.h as follows:
+        <pre xml:space="preserve">typedef HANDLE HKEY;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>HKL</b></td>
+      <td class="data">Input locale identifier.
+        <p>This type is declared in Windef.h as follows:
+        <pre xml:space="preserve">typedef HANDLE HKL;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>HLOCAL</b></td>
+      <td class="data">Handle to a local memory block.
+        <p>This type is declared in Windef.h as follows:
+        <pre xml:space="preserve">typedef HANDLE HLOCAL;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>HMENU</b></td>
+      <td class="data">Handle to a <a href="http://msdn.microsoft.com/library/en-us/winui/winui/windowsuserinterface/resources/menus.asp">menu</a>.
+        <p>This type is declared in Windef.h as follows:
+        <pre xml:space="preserve">typedef HANDLE HMENU;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>HMETAFILE</b></td>
+      <td class="data">Handle to a <a href="http://msdn.microsoft.com/library/en-us/gdi/metafile_7ulv.asp">metafile</a>.
+        <p>This type is declared in Windef.h as follows:
+        <pre xml:space="preserve">typedef HANDLE HMETAFILE;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>HMODULE</b></td>
+      <td class="data">Handle to a module. The value is the base address of the
+        module.
+        <p>This type is declared in Windef.h as follows:
+        <pre xml:space="preserve">typedef HINSTANCE HMODULE;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>HMONITOR</b></td>
+      <td class="data">Handle to a display monitor.
+        <p>This type is declared in Windef.h as follows:
+        <pre xml:space="preserve">if(WINVER &gt;= 0x0500)
+typedef HANDLE HMONITOR;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>HPALETTE</b></td>
+      <td class="data">Handle to a <a href="http://msdn.microsoft.com/library/en-us/gdi/colors_87zn.asp">palette</a>.
+        <p>This type is declared in Windef.h as follows:
+        <pre xml:space="preserve">typedef HANDLE HPALETTE;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>HPEN</b></td>
+      <td class="data">Handle to a <a href="http://msdn.microsoft.com/library/en-us/gdi/pens_1q0j.asp">pen</a>.
+        <p>This type is declared in Windef.h as follows:
+        <pre xml:space="preserve">typedef HANDLE HPEN;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>HRESULT</b></td>
+      <td class="data">Return code used by interfaces. It is zero upon success
+        and nonzero to represent an error code or status information.
+        <p>This type is declared in Winnt.h as follows:
+        <pre xml:space="preserve">typedef LONG HRESULT;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>HRGN</b></td>
+      <td class="data">Handle to a <a href="http://msdn.microsoft.com/library/en-us/gdi/regions_7ab7.asp">region</a>.
+        <p>This type is declared in Windef.h as follows:
+        <pre xml:space="preserve">typedef HANDLE HRGN;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>HRSRC</b></td>
+      <td class="data">Handle to a resource.
+        <p>This type is declared in Windef.h as follows:
+        <pre xml:space="preserve">typedef HANDLE HRSRC;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>HSZ</b></td>
+      <td class="data">Handle to a DDE string.
+        <p>This type is declared in Ddeml.h as follows:
+        <pre xml:space="preserve">typedef HANDLE HSZ;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>HWINSTA</b></td>
+      <td class="data">Handle to a <a href="http://msdn.microsoft.com/library/en-us/dllproc/base/window_stations.asp">window
+        station</a>.
+        <p>This type is declared in Windef.h as follows:
+        <pre xml:space="preserve">typedef HANDLE WINSTA;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>HWND</b></td>
+      <td class="data">Handle to a <a href="http://msdn.microsoft.com/library/en-us/winui/winui/windowsuserinterface/windowing/windows.asp">window</a>.
+        <p>This type is declared in Windef.h as follows:
+        <pre xml:space="preserve">typedef HANDLE HWND;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>INT</b></td>
+      <td class="data">32-bit signed integer.
+        <p>This type is declared in Windef.h as follows:
+        <pre xml:space="preserve">typedef int INT;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>INT_PTR</b></td>
+      <td class="data">Signed integral type for pointer precision. Use when
+        casting a pointer to an integer to perform pointer arithmetic.
+        <p>This type is declared in Basetsd.h as follows:
+        <pre xml:space="preserve">#if defined(_WIN64)
+typedef __int64 INT_PTR;
+#else
+typedef int INT_PTR;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>INT32</b></td>
+      <td class="data">32-bit signed integer.
+        <p>This type is declared in Basetsd.h as follows:
+        <pre xml:space="preserve">typedef signed int INT32;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>INT64</b></td>
+      <td class="data">64-bit signed integer.
+        <p>This type is declared in Basetsd.h as follows:
+        <pre xml:space="preserve">typedef signed __int64 INT64;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>LANGID</b></td>
+      <td class="data">Language identifier. For more information, see <a href="http://msdn.microsoft.com/library/en-us/intl/nls_2jzn.asp">Locales</a>.
+        <p>This type is declared in Winnt.h as follows:
+        <pre xml:space="preserve">typedef WORD LANGID;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>LCID</b></td>
+      <td class="data">Locale identifier. For more information, see <a href="http://msdn.microsoft.com/library/en-us/intl/nls_2jzn.asp">Locales</a>.
+        <p>This type is declared in Winnt.h as follows:
+        <pre xml:space="preserve">typedef DWORD LCID;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>LCTYPE</b></td>
+      <td class="data">Locale information type. For a list, see <a href="http://msdn.microsoft.com/library/en-us/intl/nls_3fe6.asp">Locale
+        and Language Information</a>.
+        <p>This type is declared in Winnls.h as follows:
+        <pre xml:space="preserve">typedef DWORD LCTYPE;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>LGRPID</b></td>
+      <td class="data">Language group identifier. For a list, see <a href="http://msdn.microsoft.com/library/en-us/intl/nls_7noz.asp"><b>EnumLanguageGroupLocales</b></a>.
+        <p>This type is declared in Winnls.h as follows:
+        <pre xml:space="preserve">typedef DWORD LGRPID;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>LONG</b></td>
+      <td class="data">32-bit signed integer.
+        <p>This type is declared in Winnt.h as follows:
+        <pre xml:space="preserve">typedef long LONG;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>LONGLONG</b></td>
+      <td class="data">64-bit signed integer.
+        <p>This type is declared in Winnt.h as follows:
+        <pre xml:space="preserve">typedef __int64 LONGLONG;
+#else
+typedef double LONGLONG;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>LONG_PTR</b></td>
+      <td class="data">Signed long type for pointer precision. Use when casting
+        a pointer to a long to perform pointer arithmetic.
+        <p>This type is declared in Basetsd.h as follows:
+        <pre xml:space="preserve">#if defined(_WIN64)
+typedef __int64 LONG_PTR;
+#else
+typedef long LONG_PTR;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>LONG32</b></td>
+      <td class="data">32-bit signed integer.
+        <p>This type is declared in Basetsd.h as follows:
+        <pre xml:space="preserve">typedef signed int LONG32;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>LONG64</b></td>
+      <td class="data">64-bit signed integer.
+        <p>This type is declared in Basetsd.h as follows:
+        <pre xml:space="preserve">typedef __int64 LONG64;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>LPARAM</b></td>
+      <td class="data">Message parameter.
+        <p>This type is declared in Windef.h as follows:
+        <pre xml:space="preserve">typedef LONG_PTR LPARAM;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>LPBOOL</b></td>
+      <td class="data">Pointer to a <b>bool</b>.
+        <p>This type is declared in Windef.h as follows:
+        <pre xml:space="preserve">typedef BOOL *LPBOOL;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>LPBYTE</b></td>
+      <td class="data">Pointer to a <b>BYTE</b>.
+        <p>This type is declared in Windef.h as follows:
+        <pre xml:space="preserve">typedef BYTE *LPBYTE;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>LPCOLORREF</b></td>
+      <td class="data">Pointer to a <b>COLORREF</b> value.
+        <p>This type is declared in Windef.h as follows:
+        <pre xml:space="preserve">typedef DWORD *LPCOLORREF;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>LPCSTR</b></td>
+      <td class="data">Pointer to a constant null-terminated string of 8-bit
+        Windows (ANSI) characters. For more information, see <a href="http://msdn.microsoft.com/library/en-us/gdi/fontext_89gz.asp">Character
+        Sets Used By Fonts</a>.
+        <p>This type is declared in Winnt.h as follows:
+        <pre xml:space="preserve">typedef CONST CHAR *LPCSTR;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>LPCTSTR</b></td>
+      <td class="data">An <b>LPCWSTR</b> if <a href="http://msdn.microsoft.com/library/en-us/intl/unicode_28c3.asp">UNICODE</a>
+        is defined, an <b>LPCSTR</b> otherwise.
+        <p>This type is declared in Winnt.h as follows:
+        <pre xml:space="preserve">#ifdef UNICODE
+typedef LPCWSTR LPCTSTR;
+#else
+typedef LPCSTR LPCTSTR;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>LPCVOID</b></td>
+      <td class="data">Pointer to a constant of any type.
+        <p>This type is declared in Windef.h as follows:
+        <pre xml:space="preserve">typedef CONST void *LPCVOID;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>LPCWSTR</b></td>
+      <td class="data">Pointer to a constant null-terminated string of 16-bit
+        Unicode characters. For more information, see <a href="http://msdn.microsoft.com/library/en-us/gdi/fontext_89gz.asp">Character
+        Sets Used By Fonts</a>.
+        <p>This type is declared in Winnt.h as follows:
+        <pre xml:space="preserve">typedef CONST WCHAR *LPCWSTR;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>LPDWORD</b></td>
+      <td class="data">Pointer to a <b>DWORD</b>.
+        <p>This type is declared in Windef.h as follows:
+        <pre xml:space="preserve">typedef DWORD *LPDWORD;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>LPHANDLE</b></td>
+      <td class="data">Pointer to a <b>HANDLE</b>.
+        <p>This type is declared in Windef.h as follows:
+        <pre xml:space="preserve">typedef HANDLE *LPHANDLE;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>LPINT</b></td>
+      <td class="data">Pointer to an <b>int</b>.
+        <p>This type is declared in Windef.h as follows:
+        <pre xml:space="preserve">typedef int *LPINT;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>LPLONG</b></td>
+      <td class="data">Pointer to a <b>LONG</b>.
+        <p>This type is declared in Windef.h as follows:
+        <pre xml:space="preserve">typedef long *LPLONG;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>LPSTR</b></td>
+      <td class="data">Pointer to a null-terminated string of 8-bit Windows
+        (ANSI) characters. For more information, see <a href="http://msdn.microsoft.com/library/en-us/gdi/fontext_89gz.asp">Character
+        Sets Used By Fonts</a>.
+        <p>This type is declared in Winnt.h as follows:
+        <pre xml:space="preserve">typedef CHAR *LPSTR;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>LPTSTR</b></td>
+      <td class="data">An <b>LPWSTR</b> if <a href="http://msdn.microsoft.com/library/en-us/intl/unicode_28c3.asp">UNICODE</a>
+        is defined, an <b>LPSTR</b> otherwise.
+        <p>This type is declared in Winnt.h as follows:
+        <pre xml:space="preserve">#ifdef UNICODE
+typedef LPWSTR LPTSTR;
+#else
+typedef LPSTR LPTSTR;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>LPVOID</b></td>
+      <td class="data">Pointer to any type.
+        <p>This type is declared in Windef.h as follows:
+        <pre xml:space="preserve">typedef void *LPVOID;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>LPWORD</b></td>
+      <td class="data">Pointer to a <b>WORD</b>.
+        <p>This type is declared in Windef.h as follows:
+        <pre xml:space="preserve">typedef WORD *LPWORD;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>LPWSTR</b></td>
+      <td class="data">Pointer to a null-terminated string of 16-bit Unicode
+        characters. For more information, see <a href="http://msdn.microsoft.com/library/en-us/gdi/fontext_89gz.asp">Character
+        Sets Used By Fonts</a>.
+        <p>This type is declared in Winnt.h as follows:
+        <pre xml:space="preserve">typedef WCHAR *LPWSTR;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>LRESULT</b></td>
+      <td class="data">Signed result of message processing.
+        <p>This type is declared in Windef.h as follows:
+        <pre xml:space="preserve">typedef LONG_PTR LRESULT;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>PBOOL</b></td>
+      <td class="data">Pointer to a <b>bool</b>.
+        <p>This type is declared in Windef.h as follows:
+        <pre xml:space="preserve">typedef BOOL *PBOOL;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>PBOOLEAN</b></td>
+      <td class="data">Pointer to a <b>bool</b>.
+        <p>This type is declared in Winnt.h as follows:
+        <pre xml:space="preserve">typedef BOOLEAN *PBOOLEAN;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>PBYTE</b></td>
+      <td class="data">Pointer to a <b>BYTE</b>.
+        <p>This type is declared in Windef.h as follows:
+        <pre xml:space="preserve">typedef BYTE *PBYTE;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>PCHAR</b></td>
+      <td class="data">Pointer to a <b>CHAR</b>.
+        <p>This type is declared in Winnt.h as follows:
+        <pre xml:space="preserve">typedef CHAR *PCHAR;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>PCSTR</b></td>
+      <td class="data">Pointer to a constant null-terminated string of 8-bit
+        Windows (ANSI) characters. For more information, see <a href="http://msdn.microsoft.com/library/en-us/gdi/fontext_89gz.asp">Character
+        Sets Used By Fonts</a>.
+        <p>This type is declared in Winnt.h as follows:
+        <pre xml:space="preserve">typedef CONST CHAR *PCSTR;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>PCTSTR</b></td>
+      <td class="data">A <b>PCWSTR</b> if <a href="http://msdn.microsoft.com/library/en-us/intl/unicode_28c3.asp">UNICODE</a>
+        is defined, a <b>PCSTR</b> otherwise.
+        <p>This type is declared in Winnt.h as follows:
+        <pre xml:space="preserve">#ifdef UNICODE
+typedef LPCWSTR PCTSTR;
+#else
+typedef LPCSTR PCTSTR;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>PCWSTR</b></td>
+      <td class="data">Pointer to a constant null-terminated string of 16-bit
+        Unicode characters. For more information, see <a href="http://msdn.microsoft.com/library/en-us/gdi/fontext_89gz.asp">Character
+        Sets Used By Fonts</a>.
+        <p>This type is declared in Winnt.h as follows:
+        <pre xml:space="preserve">typedef CONST WCHAR *PCWSTR;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>PDWORD</b></td>
+      <td class="data">Pointer to a <b>DWORD</b>.
+        <p>This type is declared in Windef.h as follows:
+        <pre xml:space="preserve">typedef DWORD *PDWORD;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>PDWORDLONG</b></td>
+      <td class="data">Pointer to a <b>DWORDLONG</b>.
+        <p>This type is declared in Winnt.h as follows:
+        <pre xml:space="preserve">typedef DWORDLONG *PDWORDLONG;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>PDWORD_PTR</b></td>
+      <td class="data">Pointer to a <b>DWORD_PTR</b>.
+        <p>This type is declared in Basetsd.h as follows:
+        <pre xml:space="preserve">typedef DWORD_PTR *PDWORD_PTR;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>PDWORD32</b></td>
+      <td class="data">Pointer to a <b>DWORD32</b>.
+        <p>This type is declared in Basetsd.h as follows:
+        <pre xml:space="preserve">typedef DWORD32 *PDWORD32;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>PDWORD64</b></td>
+      <td class="data">Pointer to a <b>DWORD64</b>.
+        <p>This type is declared in Basetsd.h as follows:
+        <pre xml:space="preserve">typedef DWORD64 *PDWORD64;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>PFLOAT</b></td>
+      <td class="data">Pointer to a <b>FLOAT</b>.
+        <p>This type is declared in Windef.h as follows:
+        <pre xml:space="preserve">typedef FLOAT *PFLOAT;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>PHANDLE</b></td>
+      <td class="data">Pointer to a <b>HANDLE</b>.
+        <p>This type is declared in Winnt.h as follows:
+        <pre xml:space="preserve">typedef HANDLE *PHANDLE;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>PHKEY</b></td>
+      <td class="data">Pointer to an <b>HKEY</b>.
+        <p>This type is declared in Windef.h as follows:
+        <pre xml:space="preserve">typedef HKEY *PHKEY;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>PINT</b></td>
+      <td class="data">Pointer to an <b>int</b>.
+        <p>This type is declared in Windef.h as follows:
+        <pre xml:space="preserve">typedef int *PINT;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>PINT_PTR</b></td>
+      <td class="data">Pointer to an <b>INT_PTR</b>.
+        <p>This type is declared in Basetsd.h as follows:
+        <pre xml:space="preserve">typedef INT_PTR *PINT_PTR;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>PINT32</b></td>
+      <td class="data">Pointer to an <b>INT32</b>.
+        <p>This type is declared in Basetsd.h as follows:
+        <pre xml:space="preserve">typedef INT32 *PINT32;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>PINT64</b></td>
+      <td class="data">Pointer to an <b>INT64</b>.
+        <p>This type is declared in Basetsd.h as follows:
+        <pre xml:space="preserve">typedef INT64 *PINT64;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>PLCID</b></td>
+      <td class="data">Pointer to an <b>LCID</b>.
+        <p>This type is declared in Winnt.h as follows:
+        <pre xml:space="preserve">typedef PDWORD PLCID;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>PLONG</b></td>
+      <td class="data">Pointer to a <b>LONG</b>.
+        <p>This type is declared in Winnt.h as follows:
+        <pre xml:space="preserve">typedef LONG *PLONG;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>PLONGLONG</b></td>
+      <td class="data">Pointer to a <b>LONGLONG</b>.
+        <p>This type is declared in Winnt.h as follows:
+        <pre xml:space="preserve">typedef LONGLONG *PLONGLONG;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>PLONG_PTR</b></td>
+      <td class="data">Pointer to a <b>LONG_PTR</b>.
+        <p>This type is declared in Basetsd.h as follows:
+        <pre xml:space="preserve">typedef LONG_PTR *PLONG_PTR;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>PLONG32</b></td>
+      <td class="data">Pointer to a <b>LONG32</b>.
+        <p>This type is declared in Basetsd.h as follows:
+        <pre xml:space="preserve">typedef LONG32 *PLONG32;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>PLONG64</b></td>
+      <td class="data">Pointer to a <b>LONG64</b>.
+        <p>This type is declared in Basetsd.h as follows:
+        <pre xml:space="preserve">typedef LONG64 *PLONG64;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>POINTER_32</b></td>
+      <td class="data">32-bit pointer. On a 32-bit system, this is a native
+        pointer. On a 64-bit system, this is a truncated 64-bit pointer.
+        <p>This type is declared in Basetsd.h as follows:
+        <pre xml:space="preserve">#if defined(_WIN64)
+#define POINTER_32 __ptr32
+#else
+#define POINTER32</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>POINTER_64</b></td>
+      <td class="data">64-bit pointer. On a 64-bit system, this is a native
+        pointer. On a 32-bit system, this is a sign-extended 32-bit pointer.
+        <p>This type is declared in Basetsd.h as follows:
+        <pre xml:space="preserve">#define POINTER_64 __ptr64</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>PSHORT</b></td>
+      <td class="data">Pointer to a <b>SHORT</b>.
+        <p>This type is declared in Winnt.h as follows:
+        <pre xml:space="preserve">typedef SHORT *PSHORT;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>PSIZE_T</b></td>
+      <td class="data">Pointer to a <b>SIZE_T</b>.
+        <p>This type is declared in Basetsd.h as follows:
+        <pre xml:space="preserve">typedef SIZE_T *PSIZE_T;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>PSSIZE_T</b></td>
+      <td class="data">Pointer to a <b>SSIZE_T</b>.
+        <p>This type is declared in Basetsd.h as follows:
+        <pre xml:space="preserve">typedef SSIZE_T *PSSIZE_T;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>PSTR</b></td>
+      <td class="data">Pointer to a null-terminated string of 8-bit Windows
+        (ANSI) characters. For more information, see <a href="http://msdn.microsoft.com/library/en-us/gdi/fontext_89gz.asp">Character
+        Sets Used By Fonts</a>.
+        <p>This type is declared in Winnt.h as follows:
+        <pre xml:space="preserve">typedef CHAR *PSTR;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>PTBYTE</b></td>
+      <td class="data">Pointer to a <b>TBYTE</b>.
+        <p>This type is declared in Winnt.h as follows:
+        <pre xml:space="preserve">typedef TBYTE *PTBYTE;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>PTCHAR</b></td>
+      <td class="data">Pointer to a <b>TCHAR</b>.
+        <p>This type is declared in Winnt.h as follows:
+        <pre xml:space="preserve">typedef TCHAR *PTCHAR;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>PTSTR</b></td>
+      <td class="data">A <b>PWSTR</b> if <a href="http://msdn.microsoft.com/library/en-us/intl/unicode_28c3.asp">UNICODE</a>
+        is defined, a <b>PSTR</b> otherwise.
+        <p>This type is declared in Winnt.h as follows:
+        <pre xml:space="preserve">#ifdef UNICODE
+typedef LPWSTR PTSTR;
+#else
+typedef LPSTR PTSTR;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>PUCHAR</b></td>
+      <td class="data">Pointer to a <b>UCHAR</b>.
+        <p>This type is declared in Windef.h as follows:
+        <pre xml:space="preserve">typedef UCHAR *PUCHAR;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>PUINT</b></td>
+      <td class="data">Pointer to a <b>UINT</b>.
+        <p>This type is declared in Windef.h as follows:
+        <pre xml:space="preserve">typedef UINT *PUINT;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>PUINT_PTR</b></td>
+      <td class="data">Pointer to a <b>UINT_PTR</b>.
+        <p>This type is declared in Basetsd.h as follows:
+        <pre xml:space="preserve">typedef UINT_PTR *PUINT_PTR;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>PUINT32</b></td>
+      <td class="data">Pointer to a <b>UINT32</b>.
+        <p>This type is declared in Basetsd.h as follows:
+        <pre xml:space="preserve">typedef UINT32 *PUINT32;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>PUINT64</b></td>
+      <td class="data">Pointer to a <b>UINT64</b>.
+        <p>This type is declared in Basetsd.h as follows:
+        <pre xml:space="preserve">typedef UINT64 *PUINT64;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>PULONG</b></td>
+      <td class="data">Pointer to a <b>ULONG</b>.
+        <p>This type is declared in Windef.h as follows:
+        <pre xml:space="preserve">typedef ULONG *PULONG;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>PULONGLONG</b></td>
+      <td class="data">Pointer to a <b>ULONGLONG</b>.
+        <p>This type is declared in Windef.h as follows:
+        <pre xml:space="preserve">typedef ULONGLONG *PULONGLONG;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>PULONG_PTR</b></td>
+      <td class="data">Pointer to a <b>ULONG_PTR</b>.
+        <p>This type is declared in Basetsd.h as follows:
+        <pre xml:space="preserve">typedef ULONG_PTR *PULONG_PTR;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>PULONG32</b></td>
+      <td class="data">Pointer to a <b>ULONG32</b>.
+        <p>This type is declared in Basetsd.h as follows:
+        <pre xml:space="preserve">typedef ULONG32 *PULONG32;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>PULONG64</b></td>
+      <td class="data">Pointer to a <b>ULONG64</b>.
+        <p>This type is declared in Basetsd.h as follows:
+        <pre xml:space="preserve">typedef ULONG64 *PULONG64;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>PUSHORT</b></td>
+      <td class="data">Pointer to a <b>USHORT</b>.
+        <p>This type is declared in Windef.h as follows:
+        <pre xml:space="preserve">typedef USHORT *PUSHORT;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>PVOID</b></td>
+      <td class="data">Pointer to any type.
+        <p>This type is declared in Winnt.h as follows:
+        <pre xml:space="preserve">typedef void *PVOID;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>PWCHAR</b></td>
+      <td class="data">Pointer to a <b>WCHAR</b>.
+        <p>This type is declared in Winnt.h as follows:
+        <pre xml:space="preserve">typedef WCHAR *PWCHAR;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>PWORD</b></td>
+      <td class="data">Pointer to a <b>WORD</b>.
+        <p>This type is declared in Windef.h as follows:
+        <pre xml:space="preserve">typedef WORD *PWORD;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>PWSTR</b></td>
+      <td class="data">Pointer to a null- terminated string of 16-bit Unicode
+        characters. For more information, see <a href="http://msdn.microsoft.com/library/en-us/gdi/fontext_89gz.asp">Character
+        Sets Used By Fonts</a>.
+        <p>This type is declared in Winnt.h as follows:
+        <pre xml:space="preserve">typedef WCHAR *PWSTR;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>SC_HANDLE</b></td>
+      <td class="data">Handle to a service control manager database. For more
+        information, see <a href="http://msdn.microsoft.com/library/en-us/dllproc/base/scm_handles.asp">SCM
+        Handles</a>.
+        <p>This type is declared in Winsvc.h as follows:
+        <pre xml:space="preserve">typedef HANDLE SC_HANDLE;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>SC_LOCK</b></td>
+      <td class="data">Lock to a service control manager database. For more
+        information, see <a href="http://msdn.microsoft.com/library/en-us/dllproc/base/scm_handles.asp">SCM
+        Handles</a>.
+        <p>This type is declared in Winsvc.h as follows:
+        <pre xml:space="preserve">typedef LPVOID SC_LOCK;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>SERVICE_STATUS_HANDLE</b></td>
+      <td class="data">Handle to a service status value. For more information,
+        see <a href="http://msdn.microsoft.com/library/en-us/dllproc/base/scm_handles.asp">SCM
+        Handles</a>.
+        <p>This type is declared in Winsvc.h as follows:
+        <pre xml:space="preserve">typedef HANDLE SERVICE_STATUS_HANDLE;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>SHORT</b></td>
+      <td class="data">Short integer (16 bits).
+        <p>This type is declared in Winnt.h as follows:
+        <pre xml:space="preserve">typedef short SHORT;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>SIZE_T</b></td>
+      <td class="data">The maximum number of bytes to which a pointer can point.
+        Use for a count that must span the full range of a pointer.
+        <p>This type is declared in Basetsd.h as follows:
+        <pre xml:space="preserve">typedef ULONG_PTR SIZE_T;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>SSIZE_T</b></td>
+      <td class="data">Signed <b>SIZE_T</b>.
+        <p>This type is declared in Basetsd.h as follows:
+        <pre xml:space="preserve">typedef LONG_PTR SSIZE_T;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>TBYTE</b></td>
+      <td class="data">A <b>WCHAR</b> if <a href="http://msdn.microsoft.com/library/en-us/intl/unicode_28c3.asp">UNICODE</a>
+        is defined, a <b>CHAR</b> otherwise.
+        <p>This type is declared in Winnt.h as follows:
+        <pre xml:space="preserve">#ifdef UNICODE
+typedef WCHAR TBYTE;
+#else
+typedef unsigned char TBYTE;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>TCHAR</b></td>
+      <td class="data">A <b>WCHAR</b> if <a href="http://msdn.microsoft.com/library/en-us/intl/unicode_28c3.asp">UNICODE</a>
+        is defined, a <b>CHAR</b> otherwise.
+        <p>This type is declared in Winnt.h as follows:
+        <pre xml:space="preserve">#ifdef UNICODE
+typedef WCHAR TCHAR;
+#else
+typedef char TCHAR;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>UCHAR</b></td>
+      <td class="data">Unsigned <b>CHAR</b>.
+        <p>This type is declared in Windef.h as follows:
+        <pre xml:space="preserve">typedef unsigned char UCHAR;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>UINT</b></td>
+      <td class="data">Unsigned <b>int</b>.
+        <p>This type is declared in Windef.h as follows:
+        <pre xml:space="preserve">typedef unsigned int UINT;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>UINT_PTR</b></td>
+      <td class="data">Unsigned <b>INT_PTR</b>.
+        <p>This type is declared in Basetsd.h as follows:
+        <pre xml:space="preserve">#if defined(_WIN64)
+typedef unsigned __int64 UINT_PTR;
+#else
+typedef unsigned int UINT_PTR;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>UINT32</b></td>
+      <td class="data">Unsigned <b>INT32</b>.
+        <p>This type is declared in Basetsd.h as follows:
+        <pre xml:space="preserve">typedef unsigned int 
+
+UINT32;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>UINT64</b></td>
+      <td class="data">Unsigned <b>INT64</b>.
+        <p>This type is declared in Basetsd.h as follows:
+        <pre xml:space="preserve">typedef usigned __int
+
+64 UINT64;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>ULONG</b></td>
+      <td class="data">Unsigned <b>LONG</b>.
+        <p>This type is declared in Windef.h as follows:
+        <pre xml:space="preserve">typedef unsigned long 
+
+ULONG;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>ULONGLONG</b></td>
+      <td class="data">64-bit unsigned integer.
+        <p>This type is declared in Winnt.h as follows:
+        <pre xml:space="preserve">typedef unsigned __int64 ULONGLONG;
+#else
+typedef double ULONGLONG</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>ULONG_PTR</b></td>
+      <td class="data">Unsigned <b>LONG_PTR</b>.
+        <p>This type is declared in Basetsd.h as follows:
+        <pre xml:space="preserve">#if defined(_WIN64)
+typedef unsigned __int64 ULONG_PTR;
+#else
+typedef unsigned long ULONG_PTR;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>ULONG32</b></td>
+      <td class="data">Unsigned <b>LONG32</b>.
+        <p>This type is declared in Basetsd.h as follows:
+        <pre xml:space="preserve">typedef unsigned int ULONG32;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>ULONG64</b></td>
+      <td class="data">Unsigned <b>LONG64</b>.
+        <p>This type is declared in Basetsd.h as follows:
+        <pre xml:space="preserve">typedef unsigned __int64 ULONG64;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>USHORT</b></td>
+      <td class="data">Unsigned <b>SHORT</b>.
+        <p>This type is declared in Windef.h as follows:
+        <pre xml:space="preserve">typedef unsigned short USHORT;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>USN</b></td>
+      <td class="data">Update sequence number (USN).
+        <p>This type is declared in Winnt.h as follows:
+        <pre xml:space="preserve">typedef LONGLONG USN;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>VOID</b></td>
+      <td class="data">Any type.
+        <p>This type is declared in Winnt.h as follows:
+        <pre xml:space="preserve">#define VOID void</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>WCHAR</b></td>
+      <td class="data">16-bit Unicode character. For more information, see <a href="http://msdn.microsoft.com/library/en-us/gdi/fontext_89gz.asp">Character
+        Sets Used By Fonts</a>.
+        <p>This type is declared in Winnt.h as follows:
+        <pre xml:space="preserve">typedef wchar_t WCHAR;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>WINAPI</b></td>
+      <td class="data">Calling convention for system functions.
+        <p>This type is declared in Windef.h as follows:
+        <pre xml:space="preserve">#define WINAPI __stdcall</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>WORD</b></td>
+      <td class="data">16-bit unsigned integer.
+        <p>This type is declared in Windef.h as follows:
+        <pre xml:space="preserve">typedef unsigned short WORD;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><b>WPARAM</b></td>
+      <td class="data">Message parameter.
+        <p>This type is declared in Windef.h as follows:
+        <pre xml:space="preserve">typedef UINT_PTR WPARAM;</pre>
+        <p>&nbsp;</p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p>&nbsp;</p>
+<!-- Info Task Footer -->
+<div class="itf">
+  <table cellSpacing="0" cellPadding="0" width="100%">
+    <tbody>
+      <tr class="data">
+        <td class="itf">&nbsp;&nbsp;
+          <hr align="left" width="100%">
+        </td>
+      </tr>
+      <tr class="data">
+        <td class="itf" vAlign="baseline" align="left" width="100%">&nbsp;&nbsp;Last
+          updated: May 2004&nbsp;&nbsp;|&nbsp;&nbsp;<a title="Send feedback to the Platform SDK team at sdkfdbk@microsoft.com" href="mailto:sdkfdbk@microsoft.com?subject=TITLE:%20Windows%20Data%20Types%20%5BWindows%20API];%20RELEASE:%20May%202004;%20URL:%20winprog/windows_data_types.xml">What
+          did you think of this topic?</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a title="Order a Platform SDK CD" href="https://qmedia.e-storefront.com/showcontent.asp?contentname=PlatformSDKHome" target="_blank">Order
+          a Platform SDK CD</a></td>
+      </tr>
+      <tr class="data">
+        <td class="itf" vAlign="baseline" align="left" width="100%">&nbsp;&nbsp;<a href="http://msdn.microsoft.com/library/en-us/sdkintro/sdkintro/legal_information_sdk.asp">©
+          2004 Microsoft Corporation. All rights reserved. Terms of use.</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<p>&nbsp;</p>
+
+</body>
+
+</html>

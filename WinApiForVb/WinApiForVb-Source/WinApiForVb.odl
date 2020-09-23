@@ -1,0 +1,2804 @@
+
+//Credits
+//	C++ header files (the best place to grab api)
+//	MSDN, checked almost all functions and types
+//	Interfaces and their type declarations were taken from 
+//		Edanmo's OLE interfaces & functions v1.81 tlb (http://www.mvps.org/emorcillo/index.shtml)
+//	Various resurces on the net (too many)
+
+//Reason for this type library:
+//	1-Could not find a tlb that had all the basic api's in one place
+//	2-Some had only interfaces or gdi related declarations,
+//		some had no interfaces or gdi related declarations,
+//		some had pretty much what you want, but many of the declarations were obsolete
+//		and needed to be updated or taken out all together, and the interfaces declared
+//		were not showing up in VB object browser due to the data types and the manner of declaration.
+//	3-Number of new declarations needed to be added (Arrival of XP)
+
+//Benefits:
+//	1-No string translation by VB
+//	2-I have included many variations of copymemory, sendmessage, lstrcpy,...
+//		in addition to many constants such as all letters and numbers, "/ \ [ ],..." 
+//		to avoid using litterals as much as possible.
+//	3-No need to copy and paste api declarations every time you start a new
+//		project and need to work with api.
+//	4-Both ANSI and Unicode versions of all functions and types have been
+//		added and prefixed with A_ (ANSI) and W_ (MS way of saying Unicode).
+//		allowing you to use Unicode versions of the same functions and 
+//		benefit from speed improvments, ability to display Unicode charcetsr, ...
+
+//This project was an empty Win32 dll project which i added the odl and inc files to.
+//So, you can either compile this using MIDL tool or just open up the prj in VC++6 and
+//modify. Just remeber if compiling using MIDL, must set the compatibility switch.
+//Please refer to "A_How_To_Compile_Using_MIDL.txt" for details.
+
+//Please refer your comments/questions/suggestions to mehr13@hotmail.com
+//Initial post Sep 2004
+//Last updated Aug 2005
+//Put together by MH. 
+
+/////////////////
+//Sept 16 2005
+/////////////////
+//Added interfaces
+//	interface IEnumSTATURL;
+//	interface IUrlHistoryStg;
+//	interface IUrlHistoryStg2;
+//	STATURL_QUERYFLAGS enum
+//	STATURLFLAGS enum
+//	STATURL type
+
+[
+   uuid(D4575622-4160-4FBE-8206-C7EF39D9E8B6),
+   helpstring("WinApi For VB type library"),
+   version(1.1)
+]
+library WinApiForVb {
+
+   importlib("stdole2.tlb");
+
+//void = Any
+//VOID = void = empty param: (void)/(VOID)
+//LONG = long
+//short = integer
+//SHORT = integer
+//x[] = x()
+//BYTE [x] = byte(0 to x-1)
+//xx * bb or xx *bb, pass by ref - pointer
+//To pass NULL to a (void * ) or (long * ) or long, just pass 0&
+
+//Below are what is not recognized by VB in typelib:
+//	LPSTR and LPWSTR are not recognized by VB, if used in a typedef struct. Declared as long with lpsz or lpz prefixes
+//	* (pointer), if used in a typedef struct
+//	Macros (Why????)
+
+	//Forward declarations for interfaces
+	//The order of declaration is not important rather
+	//they have to be declared before the body of the interface
+    interface ICreateTypeInfo;
+    interface ICreateTypeInfo2;
+    interface ICreateTypeLib;
+    interface ICreateTypeLib2;
+    interface IUnknown;
+    interface IEnumUnknown;
+    interface IEnumString;
+    interface IPersist;
+    interface ISequentialStream;
+    interface IStream;
+    interface IPersistStream;
+    interface IRootStorage;
+    interface IStorage;
+    interface IMoniker;
+	interface IEnumFORMATETC;
+    interface IRunningObjectTable;
+    interface IEnumSTATDATA;		
+    interface IEnumOLEVERB;		
+    interface IOleWindow; 		
+    interface IOleClientSite; 		
+    interface IOleObject;		
+    interface IOleCache;		
+    interface IOleControl;		
+    interface IOleCommandTarget;	
+    interface IOleInPlaceUIWindow; 	
+    interface IOleInPlaceActiveObject; 	
+    interface IOleInPlaceSite; 		
+    interface IOleInPlaceFrame; 	
+    interface IOleInPlaceObject;	
+    interface IOleControlSite;		
+    interface IDataObject;		
+    interface IAdviseSink;		
+    interface IBindCtx;
+    interface IEnumMoniker;
+    interface IParseDisplayName;
+    interface IOleContainer;
+	interface IMalloc;
+	interface IEnumSTATSTG;
+    interface IEnumGUID;
+    interface IEnumVARIANT;
+    interface IEnumConnections;
+    interface IEnumConnectionPoints;
+    interface ITypeInfo;
+    interface ITypeInfo2;
+    interface ITypeLib;
+    interface ITypeLib2;
+    interface ITypeComp;
+    interface IProvideClassInfo;
+    interface IConnectionPointContainer;
+    interface IConnectionPoint;
+	interface IEnumIDList;
+	interface IShellFolder;
+	interface IEnumSTATURL;
+	interface IUrlHistoryStg;
+	interface IUrlHistoryStg2;
+
+//Couple of definitions
+#define WINAPI          __stdcall
+#define UNALIGNED       // equals nothing??????????
+
+//Data type mapping, from C++ aliases to VB (as close as it gets)
+typedef long FARPROC; //Pointer to a callback function
+
+typedef long            LONG;
+typedef long			ULONG;	//Unsigned long
+typedef unsigned char	CHAR;
+typedef unsigned char	BYTE;
+typedef BYTE *			LPBYTE;
+typedef long			BOOL;
+//C++ typedef unsigned long DWORD;
+typedef long			DWORD;
+typedef long			UINT;
+typedef short			WORD;
+typedef short			SHORT;
+typedef short			ATOM;
+typedef long            FLOAT;
+typedef double          DOUBLE;
+typedef double			LONGLONG;
+typedef double			ULONGLONG;
+typedef LONGLONG		GROUPID;
+typedef long            CALLBACK;
+
+typedef void *			LPVOID;
+typedef void *			LPCVOID;
+typedef BOOL *			LPBOOL;
+typedef long *			LPDWORD;
+typedef long            HANDLE;
+typedef long            HWND;
+typedef DWORD           COLORREF; //RGB(xxx,xxx,xxx) or vbRed or x_colorName enum
+typedef long            HINSTANCE;
+typedef long            HDC;
+typedef long            HFILE;
+typedef long            HGDIOBJ;
+typedef long            HICON;
+typedef long            HCURSOR;
+typedef long            HFONT;
+typedef long            HDWP;
+typedef long            HKEY;
+typedef long            HPEN;
+typedef long            HRGN;
+typedef long            HMODULE;
+typedef long            HTASK;
+typedef long            HRSRC;
+typedef long            HBITMAP;
+typedef long            HGLOBAL;
+typedef long            HPALETTE;
+typedef long            HMETAFILE;
+typedef long            HENHMETAFILE;
+typedef long            HBRUSH;
+typedef long            HMENU;
+typedef long            HIMAGELIST;
+typedef long            HINTERNET;
+
+//
+// internet types
+//
+
+typedef WORD INTERNET_PORT;
+typedef INTERNET_PORT * LPINTERNET_PORT;
+
+//*** TCHAR:
+//ANSI: BYTE
+//Unicode: short(Integer)
+
+//*** wchar_t + WCHAR:
+//Unicode: short(Integer)
+
+//*** char + CHAR
+//ANSI: BYTE
+
+
+//Include enums and types
+#include "allenums.inc"
+#include "alltypes.inc"
+
+//Need to be here after types. More useless aliases
+typedef UUID CLSID;
+typedef CLSID* LPCLSID;
+typedef UUID IID;
+typedef IID* LPIID;
+typedef UUID *REFGUID;
+typedef IID* REFIID;
+typedef CLSID* REFCLSID;
+
+//Include constants first
+#include "userconst.inc"
+#include "winbaseconst.inc"
+#include "winerror.inc"
+#include "gdiconst.inc"
+#include "wininetconst.inc"
+#include "consts.inc"
+#include "richeditconst.inc"
+
+//Include functions
+#include "user32.inc"
+#include "kernel.inc"
+#include "oleaut32.inc"
+#include "registry.inc"
+#include "shlwapi.inc"
+#include "shell32.inc"
+#include "gdi32.inc"
+#include "network.inc"
+#include "wininet.inc"
+
+
+
+// ******* OLE32 functions
+[
+    helpstring("OLE32 Storage functions"),
+	dllname("OLE32.DLL")
+]
+module ole32 {
+
+    [entry("CoCreateGuid")]
+    long CoCreateGuid(
+        [out] UUID *pguid);
+
+    [entry("IsEqualGUID")]
+    BOOL IsEqualGUID(
+			[in] UUID *rguid1,
+			[in] UUID *rguid2);
+
+    [entry("GetClassFile")]
+    long GetClassFile(
+        [in] LPWSTR szFilename,
+        [out] UUID *pclsid);
+
+    [entry("CLSIDFromProgID")]
+    long CLSIDFromProgID(
+        [in] LPWSTR lpszProgID,
+        [in, out] UUID *lpclsid);
+
+    [entry("CLSIDFromString")]
+    long CLSIDFromString(
+        [in] LPWSTR lpszProgID,
+        [in, out] UUID *lpclsid);
+
+    [entry("ProgIDFromCLSID")]
+    void ProgIDFromCLSID(
+        [in] UUID *clsid,
+        [in, out] LONG *lplpszProgID);
+
+    [entry("StringFromGUID2")]
+    LONG StringFromGUID2(
+        [in] UUID *UUID,
+        [in, out] LPWSTR lplpsz,
+        [in] LONG cbMax);
+
+    [entry("CoTaskMemAlloc")]
+    LONG CoTaskMemAlloc(
+        [in] LONG cb);
+
+    [entry("CoTaskMemRealloc")]
+    LONG CoTaskMemRealloc(
+        [in] LONG pv,
+        [in] LONG cb);
+
+    [entry("CoTaskMemFree")]
+    LONG CoTaskMemFree(
+        [in] LONG Ptr);
+
+    [entry("CoFileTimeNow")]
+    long CoFileTimeNowCurrency(
+        [out] CURRENCY *lpFileTime);
+
+    [entry("CoFileTimeNow")]
+    long CoFileTimeNow(
+        [out] FILETIME *lpFileTime);
+
+    [entry("GetHGlobalFromStream")]
+    HRESULT GetHGlobalFromStream(
+        [in] IStream *pstm,
+        [out, retval] LONG *phglobal);
+
+    [entry("CreateStreamOnHGlobal")]
+    HRESULT CreateStreamOnHGlobal(
+        [in] LONG hGlobal,
+        [in] BOOL fDeleteOnRelease,
+        [out, retval] IStream **ppstm);
+
+}; //End OLE32
+
+// *********** URLMON
+[
+	helpstring("Urlmon functions"),
+    dllname ("URLMON.DLL")
+]
+module urlmon {
+
+    [entry("IsValidURL")]
+    LONG IsValidURL(
+        [in] void *pBC, //Must be NULL
+        [in] LPWSTR szURL,
+        [in] LONG dwReserved);
+
+    [entry("URLDownloadToFileA")]
+    LONG A_URLDownloadToFile(
+        [in] void *pCaller,
+        [in] LPSTR szURL,
+        [in] LPSTR szFile,
+        [in] LONG dwReserved,
+        [in] void *lpfnCB);
+
+    [entry("URLDownloadToFileW")]
+    LONG W_URLDownloadToFile(
+        [in] void *pCaller, //stdole.IUnknown
+        [in] LPWSTR szURL,
+        [in] LPWSTR szFile,
+        [in] LONG dwReserved,
+        [in] void *lpfnCB); //IBindStatusCallback
+
+}; //END URLMON
+
+// *********** COMCTL32
+[
+	helpstring("Common Controls"),
+	dllname("COMCTL32")
+]
+module CommonControl {
+
+    const LONG LPSTR_TEXTCALLBACK = -1;
+    const LONG INFOTIPSIZE = 1024;
+
+    const short CBEMAXSTRLEN = 260;
+
+	const short LV_MAX_WORKAREAS = 16;
+	
+	const LONG I_CHILDRENCALLBACK = (-1);
+    
+	const short UD_MAXVAL = 0x7fff; //32767 MAX integer
+    const short UD_MINVAL = -32767; //0x8000; -32768, if declared as long then we get 32768
+	
+	const long UD_FLAGS = 448;
+
+    const LONG SBARS_SIZEGRIP = 0x0100;
+    const LONG SBARS_TOOLTIPS = 0x0800;
+    const LONG SB_SIMPLEID = 0x00ff;
+
+
+//====== WM_NOTIFY codes (NMHDR.code values) ==================================
+
+    const LONG NM_FIRST              =  (0- 0);       // generic to all controls
+    const LONG NM_LAST               =  (0- 99);	  //-99
+
+    const LONG LVN_FIRST             =  (0-100);       // listview
+    const LONG LVN_LAST              =  (0-199);
+
+    const LONG HDN_FIRST             =  (0-300);       // header
+    const LONG HDN_LAST              =  (0-399);
+
+    const LONG TVN_FIRST             =  (0-400);       // treeview
+    const LONG TVN_LAST              =  (0-499);
+
+    const LONG TTN_FIRST             =  (0-520);       // tooltips
+    const LONG TTN_LAST              =  (0-549);
+
+    const LONG TCN_FIRST             =  (0-550);       // tab control
+    const LONG TCN_LAST              =  (0-580);
+
+// Shell reserved               (0-580) -  (0-589)
+
+    const LONG CDN_FIRST             =  (0-601);       // common dialog (new)
+    const LONG CDN_LAST              =  (0-699);
+
+    const LONG TBN_FIRST             =  (0-700);       // toolbar
+    const LONG TBN_LAST              =  (0-720);
+
+    const LONG UDN_FIRST             =  (0-721);        // updown
+    const LONG UDN_LAST              =  (0-740);
+
+    const LONG MCN_FIRST             =  (0-750);       // monthcal
+    const LONG MCN_LAST              =  (0-759);
+
+    const LONG DTN_FIRST             =  (0-760);       // datetimepick
+    const LONG DTN_LAST              =  (0-799);
+
+    const LONG CBEN_FIRST            =  (0-800);       // combo box ex
+    const LONG CBEN_LAST             =  (0-830);
+
+    const LONG RBN_FIRST             =  (0-831);       // rebar
+    const LONG RBN_LAST              =  (0-859);
+
+    const LONG IPN_FIRST             =  (0-860);      // internet address
+    const LONG IPN_LAST              =  (0-879);       // internet address
+
+    const LONG SBN_FIRST             =  (0-880);       // status bar
+    const LONG SBN_LAST              =  (0-899);
+
+    const LONG PGN_FIRST             =  (0-900);       // Pager Control
+    const LONG PGN_LAST              =  (0-950);
+
+	[entry("InitCommonControls")]
+	void InitCommonControls(void);
+	
+	[entry("InitCommonControlsEx")]
+	BOOL InitCommonControlsEx(
+			[in] LPVOID lpInitCtrls);
+
+        [entry("ImageList_Create")]
+        LONG ImageList_Create(
+                [in] LONG cx,
+                [in] LONG cy,
+                [in] long flags,
+                [in] LONG cInitial,
+                [in] LONG cGrow);
+
+        [entry("ImageList_Destroy")]
+        BOOL ImageList_Destroy(
+                [in] LONG himl);
+
+        [entry("ImageList_GetImageCount")]
+         LONG ImageList_GetImageCount(
+                [in] LONG himl);
+
+        [entry("ImageList_SetImageCount")]
+        BOOL ImageList_SetImageCount(
+                [in] LONG himl,
+                [in] LONG uNewCount);
+
+        [entry("ImageList_Add")]
+        LONG ImageList_Add(
+                [in] LONG himl,
+                [in] LONG hbmImage,
+                [in] LONG hbmMask);
+
+        [entry("ImageList_ReplaceIcon")]
+        LONG ImageList_ReplaceIcon(
+                [in] LONG himl,
+                [in] LONG i,
+                [in] LONG hicon);
+
+        [entry("ImageList_SetBkColor")]
+         LONG ImageList_SetBkColor(
+                [in] LONG himl,
+                [in] LONG clrBk);
+
+        [entry("ImageList_GetBkColor")]
+        LONG ImageList_GetBkColor(
+                [in] LONG himl);
+
+        [entry("ImageList_SetOverlayImage")]
+        BOOL ImageList_SetOverlayImage(
+                [in] LONG himl,
+                [in] LONG iImage,
+                [in] LONG iOverlay);
+
+        [entry("ImageList_Draw")]
+         BOOL ImageList_Draw(
+            [in] LONG himl,
+            [in] LONG i,
+            [in] LONG hdcDst,
+            [in] LONG x,
+            [in] LONG y,
+            [in] long fStyle);
+
+        [entry("ImageList_Replace")]
+        BOOL ImageList_Replace(
+            [in] LONG himl,
+            [in] LONG i,
+            [in] LONG hbmImage,
+            [in] LONG hbmMask);
+
+        [entry("ImageList_AddMasked")]
+        LONG ImageList_AddMasked(
+            [in] LONG himl,
+            [in] LONG hbmImage,
+            [in] LONG crMask);
+
+        [entry("ImageList_DrawEx")]
+        BOOL ImageList_DrawEx(
+            [in] LONG himl,
+            [in] LONG i,
+            [in] LONG hdcDst,
+            [in] LONG x,
+            [in] LONG y,
+            [in] LONG dx,
+            [in] LONG dy,
+            [in] LONG rgbBk,
+            [in] LONG rgbFg,
+            [in] long fStyle);
+
+        [entry("ImageList_DrawIndirect")]
+         BOOL ImageList_DrawIndirect(
+            [in] LPVOID pimldp);
+
+        [entry("ImageList_Remove")]
+        BOOL ImageList_Remove(
+            [in] LONG himl,
+            [in] LONG i);
+
+        [entry("ImageList_GetIcon")]
+        LONG ImageList_GetIcon(
+            [in] LONG himl,
+            [in] LONG i,
+            [in] LONG flags);
+
+        [entry("ImageList_LoadImageA")]
+        LONG ImageList_LoadImage(
+            [in] LONG hInst,
+            [in] void *lpBMPResource,
+            [in] LONG cx,
+            [in] LONG cGrow,
+            [in] LONG crMask,
+            [in] LONG uType,
+            [in] LONG uFlags);
+
+        [entry("ImageList_LoadImageW")]
+        LONG ImageList_LoadImageW(
+            [in] LONG hInst,
+            [in] void *lpBMPResource,
+            [in] LONG cx,
+            [in] LONG cGrow,
+            [in] LONG crMask,
+            [in] LONG uType,
+            [in] LONG uFlags);
+
+        [entry("ImageList_Copy")]
+        BOOL ImageList_Copy(
+            [in] LONG himlDst,
+            [in] LONG iDst,
+            [in] LONG himlSrc,
+            [in] LONG iSrc,
+            [in] ImageList_CopyFlags uFlags);
+
+        [entry("ImageList_BeginDrag")]
+        BOOL ImageList_BeginDrag(
+            [in] LONG himlTrack,
+            [in] LONG iTrack,
+            [in] LONG dxHotspot,
+            [in] LONG dyHotspot);
+
+        [entry("ImageList_EndDrag")]
+         void ImageList_EndDrag(void);
+
+        [entry("ImageList_DragEnter")]
+        BOOL ImageList_DragEnter(
+            [in] LONG hwndLock,
+            [in] LONG x,
+            [in] LONG y);
+
+        [entry("ImageList_DragLeave")]
+        BOOL ImageList_DragLeave(
+            [in] LONG hwndLock);
+
+        [entry("ImageList_DragMove")]
+        BOOL ImageList_DragMove(
+            [in] LONG x,
+            [in] LONG y);
+
+        [entry("ImageList_SetDragCursorImage")]
+        BOOL ImageList_SetDragCursorImage(
+            [in] LONG himlDrag,
+            [in] LONG iDrag,
+            [in] LONG dxHotspot,
+            [in] LONG dyHotspot);
+
+        [entry("ImageList_DragShowNolock")]
+        BOOL ImageList_DragShowNolock(
+            [in] BOOL fShow);
+
+        [entry("ImageList_GetDragImage")]
+        LONG ImageList_GetDragImage(
+            [in] POINTAPI *ppt,
+            [in] POINTAPI *pptHotspot);
+
+        [entry("ImageList_Remove")]
+        LONG ImageList_RemoveAll([in] LONG himl, [in] LONG i);
+
+        [entry("ImageList_Read")]
+        LONG ImageList_Read(
+            [in] void *pstm);
+
+        [entry("ImageList_Write")]
+        BOOL ImageList_Write(
+            [in] LONG himl,
+            [in] void *pstm);
+
+        [entry("ImageList_GetIconSize")]
+        BOOL ImageList_GetIconSize(
+            [in] LONG himl,
+            [out] LONG *cx,
+            [out] LONG *cy);
+
+        [entry("ImageList_SetIconSize")]
+        BOOL ImageList_SetIconSize(
+            [in] LONG himl,
+            [in] LONG cx,
+            [in] LONG cy);
+
+        [entry("ImageList_GetImageInfo")]
+        BOOL ImageList_GetImageInfo(
+            [in] LONG himl,
+            [in] LONG i,
+            [out] LPVOID pImageInfo);
+
+        [entry("ImageList_Merge")]
+        LONG ImageList_Merge(
+            [in] LONG himl1,
+            [in] LONG i1,
+            [in] LONG himl2,
+            [in] LONG i2,
+            [in] LONG dx,
+            [in] LONG dy);
+
+        [entry("ImageList_Duplicate")]
+        LONG ImageList_Duplicate(
+            [in] LONG himl);
+
+        [entry("DrawStatusTextA")]
+        void A_DrawStatusText(
+            [in] LONG hDC,
+            [in] RECT *lprc,
+            [in] LPSTR pszText,
+            [in] LONG uFlags);
+
+        [entry("DrawStatusTextW")]
+        void W_DrawStatusText(
+            [in] LONG hDC,
+            [in] RECT *lprc,
+            [in] LPWSTR pszText,
+            [in] LONG uFlags);
+
+        [entry("MakeDragList")]
+        BOOL MakeDragList(
+			[in] LONG hLB);
+
+        [entry("DrawInsert")]
+        void DrawInsert(
+			[in] LONG handParent,
+			[in] LONG hLB, 
+			[in] LONG nItem);
+
+        [entry("LBItemFromPt")]
+        LONG LBItemFromPtVB(
+			[in] LONG hLB, 
+			[in] long ptX,
+			[in] long ptY, 
+			[in] BOOL bAutoScroll);
+
+        [entry("InitMUILanguage")]
+        void InitMUILanguage([in] LONG uiLang);
+
+        [entry("GetMUILanguage")]
+        LONG GetMUILanguage(void);
+
+        [entry("_TrackMouseEvent")]
+        BOOL TrackMouseEvent(
+            [in] LPVOID lpEventTrack);
+
+
+        [entry("FlatSB_EnableScrollBar")]
+        BOOL FlatSB_EnableScrollBar(
+            [in] LONG hWnd,
+            [in] LONG wSBFlags,
+            [in] LONG wArrows);
+
+        [entry("FlatSB_ShowScrollBar")]
+        BOOL FlatSB_ShowScrollBar(
+            [in] LONG hWnd,
+            [in] LONG wSBFlags,
+            [in] BOOL fShow);
+
+        [entry("FlatSB_GetScrollRange")]
+        BOOL FlatSB_GetScrollRange(
+            [in] LONG hWnd,
+            [in] LONG nBar,
+            [out] LONG *lpMinPos,
+            [out] LONG *lpMaxPos);
+
+        [entry("FlatSB_GetScrollInfo")]
+        BOOL FlatSB_GetScrollInfo(
+            [in] LONG hWnd,
+            [in] LONG fnbar,
+            [out] LPVOID lpsi);
+
+        [entry("FlatSB_GetScrollPos")]
+        LONG FlatSB_GetScrollPos(
+            [in] LONG hWnd,
+            [in] LONG nBar);
+
+        [entry("FlatSB_GetScrollProp")]
+        BOOL FlatSB_GetScrollProp(
+            [in] LONG hWnd,
+            [in] long propIndex,
+            [out] LONG *Value);
+
+        [entry("FlatSB_SetScrollPos")]
+        LONG FlatSB_SetScrollPos(
+            [in] LONG hWnd,
+            [in] LONG nBar,
+            [in] LONG pos,
+            [in] BOOL fRedraw);
+
+        [entry("FlatSB_SetScrollInfo")]
+        LONG FlatSB_SetScrollInfo(
+            [in] LONG hWnd,
+            [in] LONG nBar,
+            [in] LPVOID scinfo,
+            [in] BOOL fRedraw);
+
+        [entry("FlatSB_SetScrollRange")]
+        LONG FlatSB_SetScrollRange(
+            [in] LONG hWnd,
+            [in] LONG nBar,
+            [in] LONG min,
+            [in] LONG max,
+            [in] BOOL fRedraw);
+
+        [entry("FlatSB_SetScrollProp")]
+        BOOL FlatSB_SetScrollProp(
+            [in] LONG hWnd,
+            [in] long index,
+            [in] LONG newValue,
+            [in] BOOL fRedraw);
+
+        [entry("InitializeFlatSB")]
+        BOOL InitializeFlatSB(
+            [in] LONG hWnd);
+
+        [entry("UninitializeFlatSB")]
+        HRESULT UninitializeFlatSB(
+            [in] LONG hWnd);
+
+}; //End CommonControl
+
+[
+	helpstring("IMAGEHLP path Functions"),
+	dllname("IMAGEHLP.DLL")
+]
+module imagehelp {
+	
+	[entry("SearchTreeForFile")]
+	BOOL SearchTreeForFile(
+		[in] LPSTR RootPath,
+		[in] LPSTR InputPathName,
+		[out] LPSTR OutputPathBuffer);
+	
+	[entry("MakeSureDirectoryPathExistsA")]
+	BOOL A_MakeSureDirectoryPathExists(
+		[in] LPSTR DirPath);
+
+	[entry("MakeSureDirectoryPathExistsW")]
+	BOOL W_MakeSureDirectoryPathExists(
+		[in] LPWSTR DirPath);
+
+	[entry("TouchFileTimes")]
+	BOOL UpadteLastModifiedFileTimeByHandle(
+		[in] HANDLE FileHandle,
+		[in] void * pSystemTime); //SYSTEMTIME
+
+
+}; //END IMAGEHLP
+
+
+// OLE control function entries and constants
+[
+	helpstring("OLEPRO32 Functions"),
+	dllname("OLEPRO32.DLL")
+]
+module OlePro {
+
+    [entry("OleTranslateColor")]
+    long OleTranslateColor(
+        [in] OLE_COLOR clr,
+        [in] LONG hpal,
+        [out] LONG *lpcolorref);
+
+};
+
+
+// ******** VB VarPtr helper functions
+[
+	helpstring("msvbvm60 VarPtr support for string and non string arrays"),
+	dllname("msvbvm60.dll")
+]
+module VBArrayPtr {
+
+   [
+    helpstring("Gets the address of a String array. VarPtrStringArrayPtr( MyArrayOfStrings() )"),
+	entry("VarPtr")
+   ]
+   long VarPtrStringArrayPtr([in] SAFEARRAY(BSTR)* Ptr);
+
+   [
+    helpstring("Gets the address (SAFEARRAY) of a byte array. VarPtrByteArrayPtr( Array() )"),
+	entry("VarPtr")
+   ]
+   long VarPtrByteArrayPtr([in] SAFEARRAY(BYTE)* Ptr);
+
+   [
+    helpstring("Gets the address (SAFEARRAY) of a long array. VarPtrLongArrayPtr( Array() )"),
+	entry("VarPtr")
+   ]
+   long VarPtrLongArrayPtr([in] SAFEARRAY(long)* Ptr);
+
+   [
+    helpstring("Gets the address (SAFEARRAY) of a integer array. VarPtrIntegerArrayPtr( Array() )"),
+	entry("VarPtr")
+   ]
+   long VarPtrIntegerArrayPtr([in] SAFEARRAY(short)* Ptr);
+
+   [
+    helpstring("Gets the address (SAFEARRAY) of a integer array. VarPtrDoubleArrayPtr( Array() )"),
+	entry("VarPtr")
+   ]
+   long VarPtrDoubleArrayPtr([in] SAFEARRAY(DOUBLE)* Ptr);
+
+   [
+    helpstring("Gets the address (SAFEARRAY) of Variant array. VarPtrVariantArrayPtr( Array() )"),
+	entry("VarPtr")
+   ]
+   long VarPtrVariantArrayPtr([in] SAFEARRAY(VARIANT)* Ptr);
+
+}; //End VBArrayPtr
+
+
+// *********** Interfaces
+//Replace HRESULT with LONG, to have a method showup as function in VB
+//else it will show up as a sub
+[
+    odl,
+	uuid(00000000-0000-0000-C000-000000000046)
+]
+interface IUnknown {
+
+    LONG QueryInterface(
+        [in] REFIID riid,
+        [in, out] void** ppvObject);
+
+    LONG AddRef();
+    LONG Release();
+};
+
+[
+    odl,
+	uuid(00000100-0000-0000-C000-000000000046)
+]
+interface IEnumUnknown : stdole.IUnknown {
+
+    LONG Next(
+        [in] long celt,
+        [out] IUnknown** rgelt,
+        [in, out, defaultvalue(0)] long* pceltFetched);
+
+    HRESULT Skip([in] long celt);
+
+    HRESULT Reset();
+
+    HRESULT Clone([out, retval] IEnumUnknown** ppenum);
+
+};
+
+[
+    odl,
+	uuid(00000101-0000-0000-C000-000000000046)
+]
+interface IEnumString : stdole.IUnknown {
+
+    LONG Next(
+        [in] LONG celt,
+        [out] LONG* rgelt,
+        [in, out, defaultvalue(0)] LONG* pceltFetched);
+
+    HRESULT Skip(
+        [in] LONG celt);
+
+    HRESULT Reset();
+
+    HRESULT Clone(
+        [out, retval] IEnumString** ppenum);
+
+};
+
+[
+    odl,
+	uuid(0000010c-0000-0000-C000-000000000046)
+]
+interface IPersist : stdole.IUnknown {
+
+        HRESULT GetClassID(
+            [in, out] CLSID* pClassID);
+};
+
+[
+    odl,
+	uuid(0c733a30-2a1c-11ce-ade5-00aa0044773d)
+]
+interface ISequentialStream : stdole.IUnknown {
+
+        HRESULT Read(
+            [out] void* pv,
+            [in] LONG cb,
+            [out, retval] LONG* pcbRead);
+
+        HRESULT Write(
+            [in] void* pv,
+            [in] LONG cb,
+            [out, retval] LONG* pcbWritten);
+
+};
+
+[
+    odl,
+	uuid(0000000c-0000-0000-C000-000000000046)
+]
+    interface IStream : ISequentialStream {
+
+        HRESULT Seek(
+            [in] CURRENCY dlibMove,
+            [in] LONG dwOrigin,
+            [out, retval] CURRENCY *plibNewPosition);
+
+        HRESULT SetSize(
+            [in] CURRENCY libNewSize);
+
+        HRESULT CopyTo(
+            [in] IStream *pstm,
+            [in] CURRENCY cb,
+            [out] CURRENCY *pcbRead,
+            [out] CURRENCY *pcbWritten);
+
+        HRESULT Commit(
+            [in, defaultvalue(0)] STGC grfCommitFlags);
+
+        HRESULT Revert();
+
+        HRESULT LockRegion(
+            [in] CURRENCY libOffset,
+            [in] CURRENCY cb,
+            [in] LONG dwLockType);
+
+        HRESULT UnlockRegion(
+            [in] CURRENCY libOffset,
+            [in] CURRENCY cb,
+            [in] LONG dwLockType);
+
+        HRESULT Stat(
+            [out] STATSTG *pstatstg,
+            [in, defaultvalue(0)] STATFLAG grfStatFlag);
+
+        HRESULT Clone(
+            [out, retval] IStream **ppstm);
+
+    };
+
+[
+    odl,
+	uuid(00000109-0000-0000-C000-000000000046)
+]
+    interface IPersistStream : IPersist {
+
+        LONG IsDirty(void);
+
+        HRESULT Load(
+            [in] IStream *pStm);
+
+        HRESULT Save(
+            [in] IStream *pStm,
+            [in] BOOL fClearDirty);
+
+        HRESULT GetSizeMax(
+            [out, retval] CURRENCY *pcbSize);
+
+};
+
+[
+    odl,
+	uuid(0000000f-0000-0000-C000-000000000046)
+]
+    interface IMoniker : IPersistStream {
+
+        // system moniker types; returned from IsSystemMoniker.
+        typedef enum MKSYS {
+            MKSYS_NONE = 0,
+            MKSYS_GENERICCOMPOSITE = 1,
+            MKSYS_FILEMONIKER = 2,
+            MKSYS_ANTIMONIKER = 3,
+            MKSYS_ITEMMONIKER = 4,
+            MKSYS_POINTERMONIKER = 5,
+            MKSYS_URLMONIKER = 6,
+            MKSYS_CLASSMONIKER = 7,
+            MKSYS_OBJREFMONIKER = 8,
+            MKSYS_SESSIONMONIKER = 9
+        } MKSYS;
+
+        typedef enum MKREDUCE {
+            MKRREDUCE_ONE           =   0x30,
+            MKRREDUCE_TOUSER        =   0x20,
+            MKRREDUCE_THROUGHUSER   =   0x10,
+            MKRREDUCE_ALL           =   0
+        } MKRREDUCE;
+
+        HRESULT BindToObject(
+            [in] IBindCtx *pbc,
+            [in] IMoniker *pmkToLeft,
+            [in] UUID *riidResult,
+            [in, out] void *ppvResult);
+
+        HRESULT BindToStorage(
+            [in] IBindCtx *pbc,
+            [in] IMoniker *pmkToLeft,
+            [in] UUID *riid,
+            [in, out] void *ppvObj);
+
+        HRESULT Reduce(
+            [in] IBindCtx *pbc,
+            [in] LONG dwReduceHowFar,
+            [in, out] IMoniker **ppmkToLeft,
+            [out, retval] IMoniker **ppmkReduced);
+
+        HRESULT ComposeWith(
+            [in] IMoniker *pmkRight,
+            [in] BOOL fOnlyIfNotGeneric,
+            [out, retval] IMoniker **ppmkComposite);
+
+        HRESULT Enum(
+            [in] BOOL fForward,
+            [out, retval] IEnumMoniker **ppenumMoniker);
+
+        LONG IsEqual(
+            [in] IMoniker *pmkOtherMoniker);
+
+        HRESULT Hash(
+            [out, retval] LONG *pdwHash);
+
+        LONG IsRunning(
+            [in] IBindCtx *pbc,
+            [in] IMoniker *pmkToLeft,
+            [in] IMoniker *pmkNewlyRunning);
+
+        HRESULT GetTimeOfLastChange(
+            [in] IBindCtx *pbc,
+            [in] IMoniker *pmkToLeft,
+            [out, retval] CURRENCY *pFileTime);
+
+        HRESULT Inverse(
+            [out, retval] IMoniker **ppmk);
+
+        HRESULT CommonPrefixWith(
+            [in] IMoniker *pmkOther,
+            [out, retval] IMoniker **ppmkPrefix);
+
+        HRESULT RelativePathTo(
+            [in] IMoniker *pmkOther,
+            [out, retval] IMoniker **ppmkRelPath);
+
+        HRESULT GetDisplayName(
+            [in] IBindCtx *pbc,
+            [in] IMoniker *pmkToLeft,
+            [out, retval] LONG *ppszDisplayName);
+
+        HRESULT ParseDisplayName(
+            [in] IBindCtx *pbc,
+            [in] IMoniker *pmkToLeft,
+            [in] LPWSTR pszDisplayName,
+            [out, defaultvalue(0)] LONG *pchEaten,
+            [out, retval] IMoniker **ppmkOut);
+
+        HRESULT IsSystemMoniker(
+            [out, retval] LONG *pdwMksys);
+    };
+
+[
+    odl,
+	uuid(00000010-0000-0000-C000-000000000046)
+]
+interface IRunningObjectTable : stdole.IUnknown {
+
+    HRESULT Register(
+        [in] ROTFLAGS grfFlags,
+        [in] stdole.IUnknown *punkObject,
+        [in] IMoniker *pmkObjectName,
+        [out, retval] LONG *pdwRegister);
+
+    HRESULT Revoke(
+        [in] LONG dwRegister);
+
+    HRESULT IsRunning(
+        [in] IMoniker *pmkObjectName);
+
+    HRESULT GetObject(
+        [in] IMoniker *pmkObjectName,
+        [out, retval] stdole.IUnknown **ppunkObject);
+
+    HRESULT NoteChangeTime(
+        [in] LONG dwRegister,
+        [in] CURRENCY *pfiletime);
+
+    HRESULT GetTimeOfLastChange(
+        [in] IMoniker *pmkObjectName,
+        [out, retval] CURRENCY *pfiletime);
+
+    HRESULT EnumRunning(
+        [out, retval] IEnumMoniker **ppenumMoniker);
+};
+
+    [
+        odl,
+        uuid(00000104-0000-0000-C000-000000000046),
+        helpstring("Implementable IEnumOLEVERB interface")
+    ]
+    interface IEnumOLEVERB : stdole.IUnknown {
+
+        HRESULT Next(
+            [in] long celt, 
+            [in, out] OLEVERB* rgelt, 
+            [in, out, defaultvalue(0)] long* pceltFetched);
+
+        HRESULT Skip([in] long celt);
+
+        HRESULT Reset();
+
+        HRESULT Clone([out, retval] IEnumOLEVERB** ppenum);
+
+    };
+
+[
+  odl,
+  uuid(00000105-0000-0000-C000-000000000046)
+]
+interface IEnumSTATDATA : stdole.IUnknown {
+
+    LONG Next(
+        [in] long celt,
+        [out] STATDATA* rgelt,
+        [in, out, defaultvalue(0)] long* pceltFetched);
+
+    HRESULT Skip(
+		[in] long celt);
+
+    HRESULT Reset();
+
+    HRESULT Clone(
+		[out, retval] IEnumSTATDATA** ppenum);
+
+};
+
+
+[
+    odl,
+    uuid(00000103-0000-0000-C000-000000000046),
+]
+interface IEnumFORMATETC : stdole.IUnknown {
+
+    LONG Next(
+        [in] LONG celt,
+        [in, out] FORMATETC *rgelt,
+        [out, defaultvalue(0)] LONG *pceltFetched);
+
+    HRESULT Skip(
+        [in] LONG celt);
+
+    HRESULT Reset();
+
+    HRESULT Clone(
+        [out, retval] IEnumFORMATETC **ppenum);
+};
+
+[
+    odl,
+    uuid(0000010f-0000-0000-C000-000000000046),
+]
+interface IAdviseSink : stdole.IUnknown {
+
+    void OnDataChange(
+        [in, out] FORMATETC *pFormatetc,
+        [in, out] STGMEDIUM *pStgmed);
+
+    void OnViewChange(
+        [in] DVASPECT dwAspect,
+        [in] LONG lindex);
+
+    void OnRename(
+        [in] LONG pmk);
+
+    void OnSave();
+    void OnClose();
+};
+
+[
+  odl,
+  uuid(0000010E-0000-0000-C000-000000000046)
+]
+interface IDataObject : stdole.IUnknown {
+
+    LONG GetData(
+        [in, out] FORMATETC *pformatetcIn,
+        [in, out] STGMEDIUM *pmedium);
+
+    LONG GetDataHere(
+        [in, out] FORMATETC *pformatetc,
+        [in, out] STGMEDIUM *pmedium);
+
+    LONG QueryGetData(
+        [in, out] FORMATETC* pformatetc);
+
+    HRESULT GetCanonicalFormatEtc(
+        [in, out] FORMATETC *pformatectIn,
+        [in, out] FORMATETC *pformatetcOut);
+
+    HRESULT SetData(
+        [in, out] FORMATETC *pformatetc,
+        [in, out] STGMEDIUM *pmedium,
+        [in] BOOL fRelease);
+
+    HRESULT EnumFormatEtc(
+        [in] DATADIR dwDirection,
+        [out, retval] IEnumFORMATETC **ppenumFormatEtc);
+
+    HRESULT DAdvise(
+        [in, out] FORMATETC *pformatetc,
+        [in] long advf,
+        [in] IAdviseSink *pAdvSink,
+        [out, retval] long *pdwConnection);
+
+    HRESULT DUnadvise(
+        [in] long dwConnection);
+
+    HRESULT EnumDAdvise(
+        [out, retval] IEnumSTATDATA *pIEnumAdvise);
+
+};
+
+[
+    odl,
+    uuid(00000112-0000-0000-C000-000000000046)
+]
+interface IOleObject : stdole.IUnknown {
+
+    HRESULT SetClientSite(
+        [in] IOleClientSite* ppClientSite);
+
+    HRESULT GetClientSite(
+        [out, retval] IOleClientSite** ppClientSite);
+
+    HRESULT SetHostNames(
+        [in] LPWSTR szContainerApp,
+        [in] LPWSTR szContainerObj);
+
+    HRESULT Close(
+        [in] OLECLOSE dwSaveOption);
+
+    HRESULT SetMoniker(
+        [in] OLEWHICHMK dwWhichMoniker,
+        [in] IMoniker *pmIMoniker);
+
+    HRESULT GetMoniker(
+        [in] OLEGETMONIKER dwAssign,
+        [in] OLEWHICHMK dwWhichMoniker,
+        [out, retval] IMoniker **ppmk);
+
+    HRESULT InitFromData(
+        [in] IDataObject *pDataObject,
+        [in] BOOL fCreation,
+        [in] long dwReserved);
+
+    HRESULT GetClipboardData(
+        [in] long dwReserved,
+        [out, retval] IDataObject **ppDataObject);
+
+    HRESULT DoVerb(
+        [in] long iVerb,
+        [in] MSG *lpmsg,
+        [in] IOleClientSite *pActiveSite,
+        [in] long lindex,
+        [in] long hwndParent,
+        [in] RECT* lprcPosRect);
+
+    LONG EnumVerbs(
+        [in, out] IEnumOLEVERB** ppEnumOleVerb);
+
+    HRESULT Update();
+
+    LONG IsUpToDate();
+
+    HRESULT GetUserClassID(
+        [out] UUID* pClsid);
+
+    HRESULT GetUserType(
+        [in] USERCLASSTYPE dwFormOfType,
+        [out, retval] long *pszUserType);
+
+    HRESULT SetExtent(
+        [in] DVASPECT dwDrawAspect,
+        [in, out] SIZE *pSIZE);
+
+    HRESULT GetExtent(
+        [in] DVASPECT dwDrawAspect,
+        [in, out] SIZE* pSIZE);
+
+    HRESULT Advise(
+        [in] IAdviseSink *pIAdviseSink,
+        [in, out] long* pdwConnection);
+
+    HRESULT Unadvise(
+        [in] long dwConnection);
+
+    HRESULT EnumAdvise(
+        [out, retval] IEnumSTATDATA** ppenumAdvise);
+
+    HRESULT GetMiscStatus(
+        [in] DVASPECT dwAspect,
+        [out, retval] OLEMISC* pdwStatus);
+
+    HRESULT SetColorScheme(
+        [in] LOGPALETTE* pLogpal);
+
+};
+
+[
+    odl,
+    uuid(0000011e-0000-0000-C000-000000000046),
+]
+interface IOleCache : stdole.IUnknown {
+
+    HRESULT Cache (
+        [in] FORMATETC *pformatetc,
+        [in] LONG advf,
+        [out, retval] LONG *pdwConnection);
+
+    HRESULT Uncache(
+        [in] LONG dwConnection);
+
+    HRESULT EnumCache(
+        [out, retval] IEnumSTATDATA **ppenumSTATDATA);
+
+    HRESULT InitCache(
+        [in] IDataObject *pDataObject);
+
+    HRESULT SetData(
+        [in] FORMATETC *pformatetc,
+        [in] STGMEDIUM *pmedium,
+        [in] BOOL fRelease);
+};
+
+[
+    odl,
+    uuid(B196B288-BAB4-101A-B69C-00AA00341D07),
+]
+interface IOleControl : stdole.IUnknown {
+
+    typedef enum CTRLINFO {
+        CTRLINFO_EATS_RETURN = 1,
+        CTRLINFO_EATS_ESCAPE = 2
+    } CTRLINFO;
+
+    typedef struct CONTROLINFO {
+        LONG  cb;
+        LONG hAccel;
+        short cAccel;
+        CTRLINFO dwFlags;
+    } CONTROLINFO;
+
+    HRESULT GetControlInfo(
+        [out] CONTROLINFO *pCI);
+
+    HRESULT OnMnemonic(
+        [in] MSG * pMsg);
+
+    HRESULT OnAmbientPropertyChange(
+        [in] LONG dispID);
+
+    HRESULT FreezeEvents(
+        [in] BOOL bFreeze);
+};
+
+[
+    odl,
+    uuid(b722bccb-4e68-101b-a2bc-00aa00404770),
+]
+interface IOleCommandTarget : stdole.IUnknown {
+
+    typedef enum OLECMDF {
+        OLECMDF_SUPPORTED       = 0x00000001,
+        OLECMDF_ENABLED         = 0x00000002,
+        OLECMDF_LATCHED         = 0x00000004,
+        OLECMDF_NINCHED         = 0x00000008,
+        OLECMDF_INVISIBLE       = 0x00000010,
+        OLECMDF_DEFHIDEONCTXTMENU = 0x00000020,
+    } OLECMDF;
+
+    typedef struct OLECMD {
+        LONG cmdID;
+        OLECMDF cmdf;
+    } OLECMD;
+
+    typedef enum OLECMDTEXTF {
+        OLECMDTEXTF_NONE        = 0,
+        OLECMDTEXTF_NAME        = 1,
+        OLECMDTEXTF_STATUS      = 2,
+    } OLECMDTEXTF;
+
+    typedef struct OLECMDTEXT{
+        OLECMDTEXTF cmdtextf;
+        LONG cwActual;
+        LONG cwBuf;     // size in wide chars of the buffer for text
+        BYTE rgwz[512]; // Array into which callee writes the text
+    } OLECMDTEXT;
+
+    typedef enum OLECMDEXECOPT {
+        OLECMDEXECOPT_DODEFAULT         = 0,
+        OLECMDEXECOPT_PROMPTUSER        = 1,
+        OLECMDEXECOPT_DONTPROMPTUSER    = 2,
+        OLECMDEXECOPT_SHOWHELP          = 3
+    } OLECMDEXECOPT;
+
+    typedef enum OLECMDID {
+        OLECMDID_OPEN                           = 1,
+        OLECMDID_NEW                            = 2,
+        OLECMDID_SAVE                           = 3,
+        OLECMDID_SAVEAS                         = 4,
+        OLECMDID_SAVECOPYAS                     = 5,
+        OLECMDID_PRINT                          = 6,
+        OLECMDID_PRINTPREVIEW                   = 7,
+        OLECMDID_PAGESETUP                      = 8,
+        OLECMDID_SPELL                          = 9,
+        OLECMDID_PROPERTIES                     = 10,
+        OLECMDID_CUT                            = 11,
+        OLECMDID_COPY                           = 12,
+        OLECMDID_PASTE                          = 13,
+        OLECMDID_PASTESPECIAL                   = 14,
+        OLECMDID_UNDO                           = 15,
+        OLECMDID_REDO                           = 16,
+        OLECMDID_SELECTALL                      = 17,
+        OLECMDID_CLEARSELECTION                 = 18,
+        OLECMDID_ZOOM                           = 19,
+        OLECMDID_GETZOOMRANGE                   = 20,
+        OLECMDID_UPDATECOMMANDS                 = 21,
+        OLECMDID_REFRESH                        = 22,
+        OLECMDID_STOP                           = 23,
+        OLECMDID_HIDETOOLBARS                   = 24,
+        OLECMDID_SETPROGRESSMAX                 = 25,
+        OLECMDID_SETPROGRESSPOS                 = 26,
+        OLECMDID_SETPROGRESSTEXT                = 27,
+        OLECMDID_SETTITLE                       = 28,
+        OLECMDID_SETDOWNLOADSTATE               = 29,
+        OLECMDID_STOPDOWNLOAD                   = 30,
+        OLECMDID_ONTOOLBARACTIVATED             = 31,
+        OLECMDID_FIND                           = 32,
+        OLECMDID_DELETE                         = 33,
+        OLECMDID_HTTPEQUIV                      = 34,
+        OLECMDID_HTTPEQUIV_DONE                 = 35,
+        OLECMDID_ENABLE_INTERACTION             = 36,
+        OLECMDID_ONUNLOAD                       = 37,
+        OLECMDID_PROPERTYBAG2                   = 38,
+        OLECMDID_PREREFRESH                     = 39,
+        OLECMDID_SHOWSCRIPTERROR                = 40,
+        OLECMDID_SHOWMESSAGE                    = 41,
+        OLECMDID_SHOWFIND                       = 42,
+        OLECMDID_SHOWPAGESETUP                  = 43,
+        OLECMDID_SHOWPRINT                      = 44,
+        OLECMDID_CLOSE                          = 45,
+        OLECMDID_ALLOWUILESSSAVEAS              = 46,
+        OLECMDID_DONTDOWNLOADCSS                = 47,
+    } OLECMDID;
+
+    typedef enum OLECMDERR {
+        OLECMDERR_E_FIRST            = 0x80040100,
+        OLECMDERR_E_NOTSUPPORTED     = 0x80040100,
+        OLECMDERR_E_DISABLED         = 0x80040101,
+        OLECMDERR_E_NOHELP           = 0x80040102,
+        OLECMDERR_E_CANCELED         = 0x80040103,
+        OLECMDERR_E_UNKNOWNGROUP     = 0x80040104,
+    } OLECMDERR;
+
+    HRESULT QueryStatus(
+        [in] void *pguidCmdGroup,
+        [in] LONG cCmds,
+        [in, out] OLECMD *prgCmds,
+        [in, out] OLECMDTEXT *pCmdText);
+
+
+    HRESULT Exec(
+        [in] void *pguidCmdGroup,
+        [in] LONG nCmdID,
+        [in, defaultvalue(0)] OLECMDEXECOPT nCmdexecopt,
+        [in, defaultvalue(0)] VARIANT *pvaIn,
+        [in, out, defaultvalue(0)] VARIANT *pvaOut);
+};
+
+
+[
+    odl,
+    uuid(00000114-0000-0000-C000-000000000046),
+    restricted
+]
+interface IOleWindow : stdole.IUnknown {
+
+    [restricted]
+    HRESULT GetWindow(
+        [out, retval] long *phwnd);
+
+    [restricted]
+    HRESULT ContextSensitiveHelp(
+        [in] BOOL fEnterMode);
+
+};
+
+[
+  odl,
+  uuid(00000118-0000-0000-C000-000000000046)
+]
+interface IOleClientSite : stdole.IUnknown {
+
+    HRESULT SaveObject();
+
+    HRESULT GetMoniker(
+        [in] OLEGETMONIKER dwAssign,
+        [in] OLEWHICHMK dwWhichMoniker,
+        [out, retval] IMoniker **ppIMoniker);
+
+    HRESULT GetContainer(
+        [out, retval] IOleContainer** ppContainer);
+
+    HRESULT ShowObject();
+
+    HRESULT OnShowWindow(
+        [in] BOOL fShow);
+
+    HRESULT RequestNewObjectLayout();
+};
+
+[
+    odl,
+    uuid(00000119-0000-0000-C000-000000000046)
+]
+interface IOleInPlaceSite : stdole.IUnknown {
+
+    HRESULT GetWindow(
+        [out, retval] long *phwnd);
+
+    HRESULT ContextSensitiveHelp(
+        [in] BOOL fEnterMode);
+
+    HRESULT CanInPlaceActivate();
+
+    HRESULT OnInPlaceActivate();
+
+    HRESULT OnUIActivate();
+
+    HRESULT GetWindowContext(
+        [in, out] IOleInPlaceFrame** ppFrame,
+        [in, out] IOleInPlaceUIWindow** ppDoc,
+        [in, out] RECT* lprcPosRect,
+        [in, out] RECT* lprcClipRect,
+        [in, out] OLEINPLACEFRAMEINFO* lpFrameInfo);
+
+    HRESULT Scroll(
+        [in] LONG scrollX,
+        [in] LONG scrollY);
+
+    HRESULT OnUIDeactivate([in] BOOL fUndoable);
+
+    HRESULT OnInPlaceDeactivate();
+
+    HRESULT DiscardUndoState();
+
+    HRESULT DeactivateAndUndo();
+
+    HRESULT OnPosRectChange([in, out] RECT* lprcPosRect);
+
+};
+
+[
+    odl,
+    uuid(00000117-0000-0000-C000-000000000046)
+]
+interface IOleInPlaceActiveObject : stdole.IUnknown {
+
+    HRESULT GetWindow(
+        [out, retval] long *phwnd);
+
+    HRESULT ContextSensitiveHelp(
+        [in] BOOL fEnterMode);
+
+    HRESULT TranslateAccelerator(
+        [in, out] MSG* lpmsg);
+
+    HRESULT OnFrameWindowActivate(
+        [in] BOOL fActivate);
+
+    HRESULT OnDocWindowActivate(
+        [in] BOOL fActivate);
+
+    HRESULT ResizeBorder(
+        [in, out] RECT* prcBorder,
+        [in] IOleInPlaceUIWindow *pUIWindow,
+        [in] BOOL fFrameWindow);
+
+    HRESULT EnableModeless(
+        [in] BOOL fEnable);
+};
+
+[
+    odl,
+    uuid(00000115-0000-0000-C000-000000000046)
+]
+interface IOleInPlaceUIWindow : IOleWindow {
+
+    LONG GetBorder(
+        [in, out] RECT* lprectBorder);
+
+    LONG RequestBorderSpace(
+        [in, out] RECT* pborderwidths);
+
+    LONG SetBorderSpace(
+        [in, out] RECT* pborderwidths);
+
+    LONG SetActiveObject(
+        [in] IOleInPlaceActiveObject* pActiveObject,
+        [in] LONG pszObjName);
+};
+
+
+[
+    odl,
+    uuid(00000116-0000-0000-C000-000000000046),
+]
+interface IOleInPlaceFrame : IOleInPlaceUIWindow {
+    LONG InsertMenus(
+        [in] LONG hmenuShared,
+        [in, out] OLEMENUGROUPWIDTHS *lpMenuWidths);
+    LONG SetMenu(
+        [in] LONG hmenuShared,
+        [in] LONG holemenu,
+        [in] LONG hwndActiveObject);
+    LONG RemoveMenus(
+        [in] LONG hmenuShared);
+    LONG SetStatusText(
+        [in] LONG pszStatusText);
+    LONG EnableModeless(
+        [in] BOOL fEnable);
+    LONG TranslateAccelerator(
+        [in, out] MSG *lpmsg,
+        [in] short wID);
+};
+
+[
+    odl,
+    uuid(00000113-0000-0000-C000-000000000046)
+]
+interface IOleInPlaceObject : IOleWindow {
+
+    HRESULT InPlaceDeactivate(void);
+
+    HRESULT UIDeactivate(void);
+
+    HRESULT SetObjectRects(
+        [in] RECT *lprcPosRect,
+        [in] RECT *lprcClipRect);
+
+    HRESULT ReactivateAndUndo(void);
+};
+
+[
+    odl,
+    uuid(B196B289-BAB4-101A-B69C-00AA00341D07)
+]
+interface IOleControlSite : stdole.IUnknown {
+
+    typedef struct POINTF {
+        FLOAT x;
+        FLOAT y;
+    } POINTF;
+
+    typedef enum XFORMCOORDS {
+        XFORMCOORDS_POSITION            = 0x1,
+        XFORMCOORDS_SIZE                = 0x2,
+        XFORMCOORDS_HIMETRICTOCONTAINER = 0x4,
+        XFORMCOORDS_CONTAINERTOHIMETRIC = 0x8,
+        XFORMCOORDS_EVENTCOMPAT         = 0x10
+    } XFORMCOORDS;
+
+    HRESULT OnControlInfoChanged(void);
+
+    HRESULT LockInPlaceActive(
+        [in] BOOL fLock);
+
+    HRESULT GetExtendedControl(
+        [out, retval] IDispatch **ppDisp);
+
+    HRESULT TransformCoords(
+        [in, out] POINTAPI *pPtlHimetric,
+        [in, out] POINTF *pPtfContainer,
+        [in] XFORMCOORDS dwFlags);
+
+    typedef enum KEYMODIFIERS {
+        KEYMOD_SHIFT      = 0x00000001,
+        KEYMOD_CONTROL    = 0x00000002,
+        KEYMOD_ALT        = 0x00000004
+    } KEYMODIFIERS;
+
+    HRESULT TranslateAccelerator(
+        [in, out] MSG *pMsg,
+        [in] KEYMODIFIERS grfModifiers);
+
+    HRESULT OnFocus(
+        [in] BOOL fGotFocus);
+
+    HRESULT ShowPropertyFrame(void);
+
+};
+
+[
+    odl,
+	uuid(0000000e-0000-0000-C000-000000000046)
+]
+interface IBindCtx : stdole.IUnknown {
+
+    HRESULT RegisterObjectBound(
+        [in] stdole.IUnknown *punk);
+
+    HRESULT RevokeObjectBound(
+        [in] stdole.IUnknown *punk);
+
+    HRESULT ReleaseBoundObjects(void);
+
+    HRESULT SetBindOptions(
+        [in] BIND_OPTS *pbindopts);
+
+    HRESULT GetBindOptions(
+        [in, out] BIND_OPTS *pbindopts);
+
+    HRESULT GetRunningObjectTable(
+        [out, retval] IRunningObjectTable **pprot);
+
+    HRESULT RegisterObjectParam(
+        [in] LPWSTR pszKey,
+        [in] stdole.IUnknown*punk);
+
+    HRESULT GetObjectParam(
+        [in] LPWSTR pszKey,
+        [out, retval] stdole.IUnknown **ppunk);
+
+    HRESULT EnumObjectParam(
+        [out, retval] IEnumString **ppenum);
+
+    HRESULT RevokeObjectParam(
+        [in] LPWSTR pszKey);
+
+};
+
+[
+  odl,
+  uuid(00000102-0000-0000-C000-000000000046)
+]
+interface IEnumMoniker : stdole.IUnknown {
+
+    LONG Next(
+        [in] LONG celt,
+        [out] IMoniker **rgelt,
+        [in, out, defaultvalue(0)] LONG *pceltFetched);
+
+    HRESULT Skip(
+        [in] LONG celt);
+
+    HRESULT Reset();
+
+    HRESULT Clone(
+        [out, retval] IEnumMoniker **ppenum);
+};
+
+[
+  odl,
+  uuid(0000011A-0000-0000-C000-000000000046)
+]
+interface IParseDisplayName : stdole.IUnknown {
+
+    HRESULT ParseDisplayName(
+        [in] IBindCtx *pIBindCtx,
+        [in] LONG pszDisplayName,
+        [in, out] long *pchEaten,
+        [out, retval] IMoniker **ppIMoniker);
+
+};
+
+
+[
+  odl,
+  uuid(0000011B-0000-0000-C000-000000000046)
+]
+interface IOleContainer : IParseDisplayName {
+
+    LONG EnumObjects(
+        [in] OLECONTF grfFlags,
+        [in, out] IEnumUnknown **ppenum);
+
+    HRESULT LockContainer(
+        [in] BOOL fLock);
+
+};
+
+[
+    odl,
+    uuid(00020405-0000-0000-C000-000000000046)
+]
+interface ICreateTypeInfo: stdole.IUnknown {
+
+    HRESULT SetGuid(
+        [in] UUID *guid);
+
+    HRESULT SetTypeFlags(
+        [in] LONG uTypeFlags);
+
+    HRESULT SetDocString(
+        [in] LPWSTR pStrDoc);
+
+    HRESULT SetHelpContext(
+        [in] LONG dwHelpContext);
+
+    HRESULT SetVersion(
+        [in] short wMajorVerNum,
+        [in] short wMinorVerNum);
+
+    HRESULT AddRefTypeInfo(
+        [in] ITypeInfo *pTInfo,
+        [in] LONG *phRefType);
+
+    HRESULT AddFuncDesc(
+        [in] LONG index,
+        [in] FUNCDESC * pFuncDesc);
+
+    HRESULT AddImplType(
+        [in] LONG index,
+        [in] LONG hRefType);
+
+    HRESULT SetImplTypeFlags(
+        [in] LONG index,
+        [in] LONG implTypeFlags);
+
+    HRESULT SetAlignment(
+        [in] short cbAlignment);
+
+    HRESULT SetSchema(
+        [in] LPWSTR pStrSchema);
+
+    HRESULT AddVarDesc(
+        [in] LONG index,
+        [in] VARDESC * pVarDesc);
+
+    HRESULT SetFuncAndParamNames(
+        [in] LONG index,
+        [in] LPWSTR * rgszNames,
+        [in] LONG cNames);
+
+    HRESULT SetVarName(
+        [in] LONG index,
+        [in] LPWSTR szName);
+
+    HRESULT SetTypeDescAlias(
+        [in] TYPEDESC * pTDescAlias);
+
+    HRESULT DefineFuncAsDllEntry(
+        [in] LONG index,
+        [in] LPWSTR szDllName,
+        [in] LPWSTR szProcName);
+
+    HRESULT SetFuncDocString(
+        [in] LONG index,
+        [in] LPWSTR szDocString);
+
+    HRESULT SetVarDocString(
+        [in] LONG index,
+        [in] LPWSTR szDocString);
+
+    HRESULT SetFuncHelpContext(
+        [in] LONG index,
+        [in] LONG dwHelpContext);
+
+    HRESULT SetVarHelpContext(
+        [in] LONG index,
+        [in] LONG dwHelpContext);
+
+    HRESULT SetMops(
+        [in] LONG index,
+        [in] BSTR bstrMops);
+
+    HRESULT SetTypeIdldesc(
+        [in] IDLDESC * pIdlDesc);
+
+    HRESULT LayOut(void);
+
+};
+
+[
+    odl,
+    uuid(0002040E-0000-0000-C000-000000000046)
+]
+interface ICreateTypeInfo2: ICreateTypeInfo {
+
+    HRESULT DeleteFuncDesc(
+        [in] LONG index);
+
+    HRESULT DeleteFuncDescByMemId(
+        [in] LONG memid,
+        [in] INVOKEKIND invKind);
+
+    HRESULT DeleteVarDesc(
+        [in] LONG index);
+
+    HRESULT DeleteVarDescByMemId(
+        [in] LONG memid);
+
+    HRESULT DeleteImplType(
+        [in] LONG index);
+
+    HRESULT SetCustData(
+        [in] UUID *guid,
+        [in] VARIANT * pVarVal);
+
+    HRESULT SetFuncCustData(
+        [in] LONG index,
+        [in] UUID *guid,
+        [in] VARIANT * pVarVal);
+
+    HRESULT SetParamCustData(
+        [in] LONG indexFunc,
+        [in] LONG indexParam,
+        [in] UUID *guid,
+        [in] VARIANT * pVarVal);
+
+    HRESULT SetVarCustData(
+        [in] LONG index,
+        [in] UUID *guid,
+        [in] VARIANT * pVarVal);
+
+    HRESULT SetImplTypeCustData(
+        [in] LONG index,
+        [in] UUID *guid,
+        [in] VARIANT * pVarVal);
+
+    HRESULT SetHelpStringContext(
+        [in] LONG dwHelpStringContext);
+
+    HRESULT SetFuncHelpStringContext(
+        [in] LONG index,
+        [in] LONG dwHelpStringContext);
+
+    HRESULT SetVarHelpStringContext(
+        [in] LONG index,
+        [in] LONG dwHelpStringContext);
+
+    HRESULT Invalidate(void);
+
+    HRESULT SetName(
+        [in]  LPWSTR szName);
+
+};
+
+[
+    odl,
+    uuid(00020406-0000-0000-C000-000000000046)
+]
+interface ICreateTypeLib : stdole.IUnknown {
+
+    HRESULT CreateTypeInfo(
+        [in] LPWSTR szName,
+        [in] TYPEKIND tkind,
+        [out] ICreateTypeInfo **ppCTInfo);
+
+    HRESULT SetName(
+        [in] LPWSTR szName);
+
+    HRESULT SetVersion(
+        [in] short wMajorVerNum,
+        [in] short wMinorVerNum);
+
+    HRESULT SetGuid(
+        [in] UUID *guid);
+
+    HRESULT SetDocString(
+        [in] LPWSTR szDoc);
+
+    HRESULT SetHelpFileName(
+        [in] LPWSTR szHelpFileName);
+
+    HRESULT SetHelpContext(
+        [in] LONG dwHelpContext);
+
+    HRESULT SetLcid(
+        [in] LONG lcid);
+
+    HRESULT SetLibFlags(
+        [in] LONG uLibFlags);
+
+    HRESULT SaveAllChanges(void);
+}
+
+[
+    odl,
+    uuid(0002040F-0000-0000-C000-000000000046)
+]
+
+interface ICreateTypeLib2 : stdole.IUnknown {
+
+    HRESULT DeleteTypeInfo(
+        [in] LPWSTR szName);
+
+    HRESULT SetCustData(
+        [in] UUID *guid,
+        [in] VARIANT * pVarVal);
+
+    HRESULT SetHelpStringContext(
+        [in] LONG dwHelpStringContext);
+
+    HRESULT SetHelpStringDll(
+        [in] LPWSTR szFileName);
+
+};
+
+
+[
+    odl,
+    uuid(0002E000-0000-0000-C000-000000000046)
+]
+interface IEnumGUID : stdole.IUnknown {
+
+    LONG Next(
+        [in] LONG celt,
+        [out] UUID *rgelt,
+        [in, out, defaultvalue(0)] LONG* pceltFetched);
+
+    HRESULT Skip(
+        [in] LONG celt);
+
+    HRESULT Reset();
+
+    HRESULT Clone(
+        [out, retval ] IEnumGUID **ppenum);
+};
+
+[
+    odl,
+    uuid(00020404-0000-0000-C000-000000000046)
+]
+interface IEnumVARIANT : stdole.IUnknown {
+
+    LONG Next(
+        [in] long celt,
+        [in, out] VARIANT* rgvar,
+        [in, out, defaultvalue(0)] long* pceltFetched);
+
+    HRESULT Skip([in] long celt);
+
+    HRESULT Reset();
+
+    HRESULT Clone(
+        [out] IEnumVARIANT **ppenum);
+
+};
+
+    [
+        odl,
+        uuid(B196B287-BAB4-101A-B69C-00AA00341D07),
+    ]
+    interface IEnumConnections : stdole.IUnknown {
+
+        typedef struct CONNECTDATA {
+            IDispatch *pUnk;
+            LONG dwCookie;
+        } CONNECTDATA;
+
+        LONG Next(
+            [in] LONG cConnections,
+            [in, out] CONNECTDATA *rgcd,
+            [in, out, defaultvalue(0)] LONG* lpcFetched);
+
+        HRESULT Skip(
+            [in] LONG cConnections);
+
+        HRESULT Reset(void);
+
+        HRESULT Clone(
+            [out, retval] IEnumConnections ** ppEnum);
+    };
+
+    [
+        odl,
+        uuid(B196B285-BAB4-101A-B69C-00AA00341D07),
+    ]
+    interface IEnumConnectionPoints : stdole.IUnknown {
+
+        LONG Next(
+            [in] LONG cConnections,
+            [in, out] IConnectionPoint **rgpcn,
+            [in, out, defaultvalue(0)] LONG* lpcFetched);
+
+        HRESULT Skip(
+            [in] LONG cConnections);
+
+        HRESULT Reset(void);
+
+        HRESULT Clone(
+            [out, retval]   IEnumConnectionPoints **ppEnum);
+    };
+
+    [
+        odl,
+        uuid(00020401-0000-0000-C000-000000000146),
+    ]
+    interface ITypeInfo : stdole.IUnknown {
+
+        HRESULT GetTypeAttr(
+                [out, retval] LONG * ppTypeAttr);
+
+        HRESULT GetTypeComp(
+                [out, retval] ITypeComp ** ppTComp);
+
+        HRESULT GetFuncDesc(
+                [in] LONG index,
+                [out, retval] LONG * ppFuncDesc);
+
+        HRESULT GetVarDesc(
+                [in] LONG index,
+                [out, retval] LONG * ppVarDesc);
+
+        HRESULT GetNames(
+                [in] LONG memid,
+                [in, out] BSTR * rgBstrNames,
+                [in] LONG cMaxNames,
+                [out, retval] LONG * pcNames);
+
+        HRESULT GetRefTypeOfImplType(
+                [in] LONG index,
+                [out, retval] LONG *pRefType);
+
+        HRESULT GetImplTypeFlags(
+                [in] LONG index,
+                [out, retval] LONG *pImplTypeFlags);
+
+        HRESULT GetIDsOfNames(
+                [in] LPWSTR *rgszNames,
+                [in] long cNames,
+                [in, out] long *pMemId);
+
+        HRESULT Invoke(
+                [in] stdole.IDispatch *pvInstance,
+                [in] LONG memid,
+                [in] short wFlags,
+                [in, out] DISPPARAMS * pDispParams,
+                [in] LONG pVarResult,
+                [in, out] EXCEPINFO * pExcepInfo,
+                [in, out] LONG * puArgErr);
+
+        HRESULT GetDocumentation(
+                [in] LONG memid,
+                [in, out] BSTR * pBstrName,
+                [in, out] BSTR * pBstrDocString,
+                [in, out] LONG * pdwHelpContext,
+                [in, out] BSTR * pBstrHelpFile);
+
+        HRESULT GetDllEntry(
+                [in] LONG memid,
+                [in] INVOKEKIND invKind,
+                [in, out] BSTR * pBstrDllName,
+                [in, out] BSTR * pBstrName,
+                [in, out] short * pwOrdinal);
+
+        HRESULT GetRefTypeInfo(
+                [in] LONG hRefType,
+                [out, retval] ITypeInfo **ppTInfo);
+
+        HRESULT AddressOfMember(
+                [in] LONG memid,
+                [in] INVOKEKIND invKind,
+                [out, retval] LONG *ppv);
+
+        HRESULT CreateInstance(
+                [in] void *pUnkOuter,
+                [in] UUID *riid,
+                [out, retval] IDispatch **ppvObj);
+
+        HRESULT GetMops(
+                [in] LONG memid,
+                [in, out] BSTR * pBstrMops);
+
+        HRESULT GetContainingTypeLib(
+                [out] ITypeLib **ppTLib,
+                [out, retval] LONG * pIndex);
+
+        void ReleaseTypeAttr(
+                [in] LONG pTypeAttr);
+
+        void ReleaseFuncDesc(
+                [in] LONG pFuncDesc);
+
+        void ReleaseVarDesc(
+                [in] LONG pVarDesc);
+
+    };
+
+    [
+        uuid(00020412-0000-0000-C000-000000000046),
+        helpstring("ITypeInfo2 interface"),
+        odl
+    ]
+    interface ITypeInfo2 : ITypeInfo {
+
+        HRESULT GetTypeKind(
+                [out, retval] TYPEKIND * pTypeKind);
+
+        HRESULT GetTypeFlags(
+                [out, retval] TYPEFLAGS *pTypeFlags);
+
+        HRESULT GetFuncIndexOfMemId(
+                [in] LONG memid,
+                [in] INVOKEKIND invKind,
+                [out, retval] LONG *pFuncIndex);
+
+        HRESULT GetVarIndexOfMemId(
+                [in] LONG memid,
+                [out, retval] LONG * pVarIndex);
+
+        HRESULT GetCustData(
+                [in] UUID *IID,
+                [out, retval] VARIANT * pVarVal);
+
+        HRESULT GetFuncCustData(
+                [in] LONG index,
+                [in] UUID *riid,
+                [out, retval] VARIANT * pVarVal);
+
+        HRESULT GetParamCustData(
+                [in] LONG indexFunc,
+                [in] LONG indexParam,
+                [in] UUID *riid,
+                [out, retval] VARIANT * pVarVal);
+
+        HRESULT GetVarCustData(
+                [in] LONG index,
+                [in] UUID * riid,
+                [out, retval] VARIANT * pVarVal);
+
+       HRESULT GetImplTypeCustData(
+                [in] LONG index,
+                [in] UUID *riid,
+                [out, retval] VARIANT * pVarVal);
+
+       HRESULT GetDocumentation2(
+                [in] LONG memid,
+                [in] LONG lcid,
+                [out] BSTR *pbstrHelpString,
+                [out] LONG *pdwHelpStringContext,
+                [out] BSTR *pbstrHelpStringDll);
+
+       HRESULT GetAllCustData(
+                [in, out] CUSTDATA * pCustData);
+
+       HRESULT GetAllFuncCustData(
+                [in] LONG index,
+                [in, out] CUSTDATA * pCustData);
+
+       HRESULT GetAllParamCustData(
+                [in] LONG indexFunc,
+                [in] LONG indexParam,
+                [in, out] CUSTDATA * pCustData);
+
+       HRESULT GetAllVarCustData(
+                [in] LONG index,
+                [in, out] CUSTDATA * pCustData);
+
+       HRESULT GetAllImplTypeCustData(
+                [in] LONG index,
+                [in, out] CUSTDATA * pCustData);
+    };
+
+    [
+        uuid(00020402-0000-0000-C000-000000000046),
+        helpstring("ITypeLib interface"),
+        odl
+    ]
+    interface ITypeLib : stdole.IUnknown {
+
+        LONG GetTypeInfoCount(void);
+
+        HRESULT GetTypeInfo(
+            [in]  LONG index,
+            [out, retval] ITypeInfo ** ppTInfo);
+
+        HRESULT GetTypeInfoType(
+            [in]  LONG index,
+            [out, retval] TYPEKIND * pTKind);
+
+        HRESULT GetTypeInfoOfIID(
+            [in] UUID *IID,
+            [out, retval] ITypeInfo ** ppTinfo);
+
+        HRESULT GetLibAttr(
+            [out, retval] LONG *ppTLibAttr);
+
+        HRESULT GetTypeComp(
+            [out, retval] ITypeComp ** ppTComp);
+
+        HRESULT GetDocumentation(
+            [in] LONG index,
+            [out] BSTR * pBstrName,
+            [out] BSTR * pBstrDocString,
+            [out] LONG * pdwHelpContext,
+            [out] BSTR * pBstrHelpFile);
+
+        HRESULT IsName(
+            [in, out] LPWSTR szNameBuf,
+            [in] LONG lHashVal,
+            [out, retval] BOOL * pfName);
+
+       HRESULT FindName(
+            [in, out] LPWSTR szNameBuf,
+            [in] LONG lHashVal,
+            [in, out] ITypeInfo **ppTInfo,
+            [in, out] LONG *rgMemId,
+            [in, out] short *pcFound);
+
+       void ReleaseTLibAttr(
+            [in]  LONG pTLibAttr);
+
+    };
+
+    [
+        uuid(00020411-0000-0000-C000-000000000046),
+        odl
+    ]
+    interface ITypeLib2 : ITypeLib {
+
+        HRESULT GetCustData(
+            [in] UUID *IID,
+            [out, retval] VARIANT * pVarVal);
+
+        HRESULT GetLibStatistics(
+            [out] LONG * pcUniqueNames,
+            [out] LONG * pcchUniqueNames);
+
+        HRESULT GetDocumentation2(
+            [in]  INT index,
+            [in]  LONG lcid,
+            [out] BSTR *pbstrHelpString,
+            [out] LONG *pdwHelpStringContext,
+            [out] BSTR *pbstrHelpStringDll);
+
+        HRESULT GetAllCustData(
+            [out] CUSTDATA * pCustData);
+    };
+
+    [
+        odl,
+        uuid(00020403-0000-0000-C000-000000000046)
+    ]
+    interface ITypeComp : stdole.IUnknown {
+
+        typedef enum DESCKIND {
+            DESCKIND_NONE = 0,
+            DESCKIND_FUNCDESC,
+            DESCKIND_VARDESC,
+            DESCKIND_TYPECOMP,
+            DESCKIND_IMPLICITAPPOBJ,
+            DESCKIND_MAX
+        } DESCKIND;
+
+        typedef [public] LONG BINDPTR;
+
+        HRESULT Bind(
+            [in] LPWSTR szName,
+            [in] LONG lHashVal,
+            [in] short wFlags,
+            [out] ITypeInfo ** ppTInfo,
+            [out] DESCKIND * pDescKind,
+            [out] BINDPTR * pBindPtr);
+
+        HRESULT BindType(
+            [in] LPWSTR szName,
+            [in] LONG lHashVal,
+            [out] ITypeInfo ** ppTInfo,
+            [out] ITypeComp ** ppTComp);
+
+    };
+
+    [
+        odl,
+        uuid(B196B283-BAB4-101A-B69C-00AA00341D07),
+    ]
+    interface IProvideClassInfo : stdole.IUnknown {
+
+        HRESULT GetClassInfo(
+                [out, retval] ITypeInfo ** ppTI);
+    };
+
+    [
+        odl,
+        uuid(B196B284-BAB4-101A-B69C-00AA00341D07),
+    ]
+    interface IConnectionPointContainer : stdole.IUnknown {
+
+        HRESULT EnumConnectionPoints(
+            [out, retval] IEnumConnectionPoints ** ppEnum);
+
+        HRESULT FindConnectionPoint(
+            [in] UUID *riid,
+            [out, retval]   IConnectionPoint ** ppCP);
+    };
+
+    [
+        odl,
+        uuid(B196B286-BAB4-101A-B69C-00AA00341D07),
+    ]
+    interface IConnectionPoint : stdole.IUnknown {
+
+        HRESULT GetConnectionInterface(
+            [in, out] UUID *piid);
+
+        HRESULT GetConnectionPointContainer(
+            [out, retval] IConnectionPointContainer ** ppCPC);
+
+        HRESULT Advise(
+            [in] stdole.IUnknown *pObjetPtr,
+            [out, retval] LONG *pdwCookie);
+
+        HRESULT Unadvise(
+            [in] LONG dwCookie);
+
+        HRESULT EnumConnections(
+            [out, retval] IEnumConnections **ppEnum);
+    };
+
+    [
+      odl,
+      uuid(00020400-0000-0000-C000-000000000046),
+    ]
+    interface IDispatch : IUnknown {
+
+        HRESULT GetTypeInfoCount(
+            [out, retval] int* pctinfo);
+
+        HRESULT GetTypeInfo(
+            [in, defaultvalue(0)] int itinfo,
+            [in, defaultvalue(0)] long lcid,
+            [out, retval] ITypeInfo **pptinfo);
+
+        LONG GetIDsOfNames(
+            [in] UUID* riid,
+            [in] LPWSTR *rgszNames,
+            [in] int cNames,
+            [in] long lcid,
+            [out] long *rgdispid);
+
+        LONG Invoke(
+            [in] long dispidMember,
+            [in] UUID* riid,
+            [in] long lcid,
+            [in] short wFlags,
+            [in] DISPPARAMS *pdispparams,
+            [in] long pvarResult,
+            [out] EXCEPINFO *pexcepinfo,
+            [out] int *puArgErr);
+    };
+
+[
+    odl,
+    uuid(00000002-0000-0000-C000-000000000046)
+]
+interface IMalloc : stdole.IUnknown {
+    LONG Alloc(
+        [in] LONG cb);
+
+    LONG Realloc(
+        [in] void *pv,
+        [in] LONG cb);
+
+    LONG Free(
+        [in] LONG pv);
+
+    LONG GetSize(
+        [in] LONG pv);
+
+    LONG DidAlloc(
+        [in] LONG pv);
+
+    void HeapMinimize(void);
+
+};
+
+[
+    odl,
+    uuid(0000000d-0000-0000-C000-000000000046),
+]
+interface IEnumSTATSTG : stdole.IUnknown {
+
+    LONG Next(
+        [in] LONG celt,
+        [out] STATSTG *rgelt,
+        [out, defaultvalue(0)] LONG *pceltFetched);
+
+    HRESULT Skip(
+        [in] LONG celt);
+
+    HRESULT Reset();
+
+    HRESULT Clone(
+        [out, retval] IEnumSTATSTG **ppenum);
+};
+
+
+    [
+        odl,
+        uuid(00000012-0000-0000-C000-000000000046),
+    ]
+    interface IRootStorage : stdole.IUnknown {
+
+        HRESULT SwitchToFile(
+            [in] LPWSTR pszFile);
+    };
+
+    [
+        odl,
+        uuid(0000000b-0000-0000-C000-000000000046),
+    ]
+    interface IStorage : stdole.IUnknown {
+
+        HRESULT CreateStream(
+            [in] LPWSTR pwcsName,
+            [in] STGM grfMode,
+            [in, defaultvalue(0)] LONG reserved1,
+            [in, defaultvalue(0)] LONG reserved2,
+            [out, retval] IStream **ppstm);
+
+        HRESULT OpenStream(
+            [in] LPWSTR pwcsName,
+            [in] LONG reserved1,
+            [in] STGM grfMode,
+            [in, defaultvalue(0)] LONG reserved2,
+            [out, retval] IStream **ppstm);
+
+        HRESULT CreateStorage(
+            [in] LPWSTR pwcsName,
+            [in] STGM grfMode,
+            [in, defaultvalue(0)] LONG reserved1,
+            [in, defaultvalue(0)] LONG reserved2,
+            [out, retval] IStorage **ppstg);
+
+        HRESULT OpenStorage(
+            [in] LPWSTR pwcsName,
+            [in] LONG pstgPriority,
+            [in] STGM grfMode,
+            [in, defaultvalue(0)] LONG snbExclude,
+            [in, defaultvalue(0)] LONG reserved,
+            [out, retval] IStorage **ppstg);
+
+        HRESULT CopyTo(
+            [in] LONG ciidExclude,
+            [in] void *rgiidExclude,
+            [in] LPWSTR snbExclude,
+            [in] IStorage *pstgDest);
+
+        HRESULT MoveElementTo(
+            [in] LPWSTR pwcsName,
+            [in] IStorage *pstgDest,
+            [in] LPWSTR *pwcsNewName,
+            [in] STGMOVE grfFlags);
+
+        HRESULT Commit(
+            [in, defaultvalue(0)] STGC grfCommitFlags);
+
+        HRESULT Revert();
+
+        HRESULT EnumElements(
+            [in, defaultvalue(0)] LONG reserved1,
+            [in, defaultvalue(0)] LONG reserved2,
+            [in, defaultvalue(0)] LONG reserved3,
+            [out, retval] IEnumSTATSTG **ppenum);
+
+        HRESULT DestroyElement(
+            [in] LPWSTR pwcsName);
+
+        HRESULT RenameElement(
+            [in] LPWSTR pwcsOldName,
+            [in] LPWSTR pwcsNewName);
+
+        HRESULT SetElementTimes(
+            [in] LPWSTR pwcsName,
+            [in] CURRENCY *pctime,
+            [in] CURRENCY *patime,
+            [in] CURRENCY *pmtime);
+
+        HRESULT SetClass(
+            [in] UUID *clsid);
+
+        HRESULT SetStateBits(
+            [in] LONG grfStateBits,
+            [in] LONG grfMask);
+
+        HRESULT Stat(
+            [out] STATSTG *pstatstg,
+            [in, defaultvalue(0)] STATFLAG grfStatFlag);
+    };
+
+[
+    odl,
+    uuid(000214F2-0000-0000-C000-000000000046),
+    helpstring("IEnumIDList interface")
+]
+interface IEnumIDList : stdole.IUnknown {
+
+    HRESULT Next(
+        [in] LONG celt,
+        [in, out] LONG *rgelt,
+        [in, out, defaultvalue(0)] LONG *pceltFetched);
+
+    HRESULT Skip(
+        [in] LONG celt);
+
+    HRESULT Reset();
+
+    HRESULT Clone(
+        [out, retval] IEnumIDList **ppenum);
+};
+
+[
+  odl,
+  uuid(000214E6-0000-0000-C000-000000000046),
+  helpstring("IShellFolder interface")
+]
+interface IShellFolder : stdole.IUnknown {
+
+    HRESULT ParseDisplayName(
+        [in] long hwndOwner,
+        [in] long pbcReserved,
+        [in] long lpszDisplayName,
+        [in, out] long* pchEaten,
+        [in, out] long* ppidl,
+        [in, out] long* pdwAttributes);
+
+    HRESULT EnumObjects(
+        [in] long hwndOwner,
+        [in] SHCONTF grfFlags,
+        [out, retval] IEnumIDList** ppenumIDList);
+
+    HRESULT BindToObject(
+        [in] long pidl,
+        [in] long pbcReserved,
+        [in, out] UUID *riid,
+        [in, out] long *ppvOut);
+
+    HRESULT BindToStorage(
+        [in] long pidl,
+        [in] long pbcReserved,
+        [in, out] UUID *riid,
+        [out, retval] IStorage **ppvObj);
+
+    HRESULT CompareIDs(
+        [in] long lparam,
+        [in] long pidl1,
+        [in] long pidl2);
+
+    HRESULT CreateViewObject(
+        [in] long hwndOwner,
+        [in, out] UUID* riid,
+        [out, retval] long *ppvOut);
+
+    HRESULT GetAttributesOf(
+        [in] long cidl,
+        [in, out] long* apidl,
+        [in, out] long* rgfInOut);
+
+    HRESULT GetUIObjectOf(
+        [in] long hwndOwner,
+        [in] long cidl,
+        [in, out] long *apidl,
+        [in, out] UUID  *riid,
+        [in, out] long *prgfInOut,
+        [out, retval] long *ppvOut);
+
+    HRESULT GetDisplayNameOf(
+        [in] long pidl,
+        [in] SHGNO_Flags uFlags,
+        [in, out] STRRET* lpName);
+
+    HRESULT SetNameOf(
+        [in] long hwndOwner,
+        [in] long pidl,
+        [in] long lpszName,
+        [in] SHGNO_Flags uFlags,
+        [out, retval] long* ppidlOut);
+};
+
+//_stdcall optional,, defaultvalue(1) 
+
+[
+  odl,
+  uuid(3C374A42-BAE4-11CF-BF7D-00AA006946EE),
+  helpstring("Enumerates the cached URLs")
+]
+interface IEnumSTATURL : stdole.IUnknown {
+    LONG Next( [in] long celt, 
+							[in, out] STATURL* rgelt, 
+							[in, out, defaultvalue(0)] long* pceltFetched);
+    HRESULT Skip([in] long celt);
+    HRESULT Reset();
+    HRESULT Clone([out, retval] IEnumSTATURL** ppenum);
+    HRESULT SetFilter([in] LPWSTR poszFilter, 
+                    [in] STATURL_QUERYFLAGS dwFlags);
+};
+
+[
+    odl,
+    uuid(3C374A41-BAE4-11CF-BF7D-00AA006946EE),
+]
+interface IUrlHistoryStg : stdole.IUnknown {
+
+    [helpstring("Adds a new history entry")]
+    HRESULT AddUrl (
+        [in] LPWSTR pocsUrl,
+        [in] LPWSTR pocsTitle,
+        [in] STATURLFLAGS dwFlags);
+
+    [helpstring("Deletes an entry by its URL")]
+    HRESULT DeleteUrl(
+        [in] LPWSTR pocsUrl,
+        [in] LONG dwFlags);
+
+    [helpstring("Returns a STATURL for a given URL")]
+    HRESULT QueryUrl (
+        [in] LPWSTR pocsUrl,
+        [in] LONG dwFlags,
+        [in, out] STATURL *lpSTATURL);
+
+    [helpstring("Binds to an object")]	
+    HRESULT BindToObject (
+        [in] LPWSTR pocsUrl,
+        [in] UUID *riid,
+        [out, retval] void** ppvOut);
+
+    [helpstring("Returns an enumerator for URLs")]
+    HRESULT EnumUrls (
+        [out, retval] IEnumSTATURL **ppEnum);
+
+};
+
+[
+    odl,
+    uuid(AFA0DC11-C313-11d0-831A-00C04FD5AE38)
+]
+interface IUrlHistoryStg2 : IUrlHistoryStg {
+
+    [helpstring("Adds an URLS\n IOleCommandTarget *poctNotify\nIShellFolder *punkISFolder")]
+    HRESULT AddUrlAndNotify (
+        [in] LPWSTR pocsUrl,
+        [in] LPWSTR pocsTitle,
+        [in] LONG dwFlags,
+        [in] BOOL fWriteHistory,
+        [in] stdole.IUnknown* poctNotify,
+        [in] stdole.IUnknown* punkISFolder );
+
+    [helpstring("Removes all history items")]
+    HRESULT ClearHistory();
+};
+
+[
+	uuid(3C374A40-BAE4-11CF-BF7D-00AA006946EE),
+	helpstring("UrlHistory class")
+]
+coclass UrlHistory {
+	[default] interface IUrlHistoryStg2;
+};
+
+
+
+
+
+};

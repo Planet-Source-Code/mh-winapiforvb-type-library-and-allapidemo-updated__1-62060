@@ -1,0 +1,1054 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Obsolete Windows Programming Elements</title>
+</head>
+
+<body>
+
+<h1>Obsolete Windows Programming Elements</h1>
+<p>The following table provides a list of functions that are supported only for
+backward compatibility with the 16-bit Windows API.</p>
+<p>&nbsp;
+<table class="data">
+  <tbody>
+    <tr class="data">
+      <th>16-bit Windows API</th>
+      <th>32-bit Windows support</th>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>_hread</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/fileio/base/readfile.asp"><b>ReadFile</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>_hwrite</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/fileio/base/writefile.asp"><b>WriteFile</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>_lclose</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/sysinfo/base/closehandle.asp"><b>CloseHandle</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>_lcreat</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/fileio/base/createfile.asp"><b>CreateFile</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>_llseek</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/fileio/base/setfilepointer.asp"><b>SetFilePointer</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>_lopen</b></a></td>
+      <td class="data">Replaced by the <b>CreateFile</b> function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>_lread</b></a></td>
+      <td class="data">Replaced by the <b>ReadFile</b> function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>_lwrite</b></a></td>
+      <td class="data">Replaced by the <b>WriteFile</b> function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>AnsiLower</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/winui/winui/windowsuserinterface/resources/strings/stringreference/stringfunctions/charlower.asp"><b>CharLower</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>AnsiLowerBuff</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/winui/winui/windowsuserinterface/resources/strings/stringreference/stringfunctions/charlowerbuff.asp"><b>CharLowerBuff</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>AnsiNext</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/winui/winui/windowsuserinterface/resources/strings/stringreference/stringfunctions/charnext.asp"><b>CharNext</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>AnsiPrev</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/winui/winui/windowsuserinterface/resources/strings/stringreference/stringfunctions/charprev.asp"><b>CharPrev</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>AnsiToOem</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/winui/winui/windowsuserinterface/resources/strings/stringreference/stringfunctions/chartooem.asp"><b>CharToOem</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>AnsiToOemBuff</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/winui/winui/windowsuserinterface/resources/strings/stringreference/stringfunctions/chartooembuff.asp"><b>CharToOemBuff</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>AnsiUpper</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/winui/winui/windowsuserinterface/resources/strings/stringreference/stringfunctions/charupper.asp"><b>CharUpper</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>AnsiUpperBuff</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/winui/winui/windowsuserinterface/resources/strings/stringreference/stringfunctions/charupperbuff.asp"><b>CharUpperBuff</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>AnyPopup</b></a></td>
+      <td class="data">Not generally useful. Maintained for compatibility with
+        Windows 1.x.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>CloseMetaFile</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/gdi/metafile_9r39.asp"><b>CloseEnhMetaFile</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>CopyLZFile</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/fileio/base/lzcopy.asp"><b>LZCopy</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>CopyMetaFile</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/gdi/metafile_59ph.asp"><b>CopyEnhMetaFile</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>CreateDIBPatternBrush</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/gdi/brushes_3qg8.asp"><b>CreateDIBPatternBrush</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>CreateDiscardableBitmap</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/gdi/bitmaps_1cxc.asp"><b>CreateCompatibleBitmap</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>CreateMetaFile</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/gdi/metafile_81yd.asp"><b>CreateEnhMetaFile</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>DefHookProc</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/winui/winui/windowsuserinterface/windowing/hooks/hookreference/hookfunctions/callnexthookex.asp"><b>CallNextHookEx</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>DeleteMetaFile</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/gdi/metafile_1isl.asp"><b>DeleteEnhMetaFile</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>EnumFontFamilies</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/gdi/fontext_4mk8.asp"><b>EnumFontFamiliesEx</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>EnumFontFamProc</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/gdi/fontext_9rmr.asp"><b>EnumFontFamExProc</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>EnumFonts</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/gdi/fontext_4mk8.asp"><b>EnumFontFamiliesEx</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>EnumFontsProc</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/gdi/fontext_9rmr.asp"><b>EnumFontFamExProc</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>EnumMetaFile</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/gdi/metafile_42qt.asp"><b>EnumEnhMetaFile</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>EnumMetaFileProc</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/gdi/metafile_4mcj.asp"><b>EnhMetaFileProc</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>EnumTaskWindows</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/winui/winui/windowsuserinterface/windowing/windows/windowreference/windowfunctions/enumthreadwindows.asp"><b>EnumThreadWindows</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>FloodFill</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/gdi/bitmaps_7yb0.asp"><b>ExtFloodFill</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>FreeModule</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/dllproc/base/freelibrary.asp"><b>FreeLibrary</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>FreeProcInstance</b></a></td>
+      <td class="data">Not necessary and has no effect. Windows can call entry
+        points directly.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>FreeResource</b></a></td>
+      <td class="data">Replaced as follows:
+        <p>Accelerator: <a href="http://msdn.microsoft.com/library/en-us/winui/winui/windowsuserinterface/userinput/keyboardaccelerators/keyboardacceleratorreference/keyboardacceleratorfunctions/destroyacceleratortable.asp"><b>DestroyAcceleratorTable</b></a><br>
+        Bitmap: <a href="http://msdn.microsoft.com/library/en-us/gdi/devcons_1vsk.asp"><b>DeleteObject</b></a><br>
+        Cursor: <a href="http://msdn.microsoft.com/library/en-us/winui/winui/windowsuserinterface/resources/cursors/cursorreference/cursorfunctions/destroycursor.asp"><b>DestroyCursor</b></a><br>
+        Icon: <a href="http://msdn.microsoft.com/library/en-us/winui/winui/windowsuserinterface/resources/icons/iconreference/iconfunctions/destroyicon.asp"><b>DestroyIcon</b></a><br>
+        Menu: <a href="http://msdn.microsoft.com/library/en-us/winui/winui/windowsuserinterface/resources/menus/menureference/menufunctions/destroymenu.asp"><b>DestroyMenu</b></a></p>
+      </td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>GetBitmapBits</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/gdi/bitmaps_7gms.asp"><b>GetDIBits</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>GetCharWidth</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/gdi/fontext_5cz6.asp"><b>GetCharWidth32</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>GetClassWord</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/winui/winui/windowsuserinterface/windowing/windowclasses/windowclassreference/windowclassfunctions/getclasslong.asp"><b>GetClassLong</b></a>
+        function</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>GetCurrentTime</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/sysinfo/base/gettickcount.asp"><b>GetTickCount</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>GetFreeSpace</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/memory/base/globalmemorystatus.asp"><b>GlobalMemoryStatus</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>GetKBCodePage</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/intl/nls_7q5s.asp"><b>GetOEMCP</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>GetMetaFile</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/gdi/metafile_5git.asp"><b>GetEnhMetaFile</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>GetMetaFileBitsEx</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/gdi/metafile_5kdv.asp"><b>GetEnhMetaFileBits</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>GetPrivateProfileInt</b></a></td>
+      <td class="data">Replaced by registry support.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>GetPrivateProfileSection</b></a></td>
+      <td class="data">Replaced by registry support.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>GetPrivateProfileSectionNames</b></a></td>
+      <td class="data">Replaced by registry support.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>GetPrivateProfileString</b></a></td>
+      <td class="data">Replaced by registry support.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>GetPrivateProfileStruct</b></a></td>
+      <td class="data">Replaced by registry support.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>GetProfileInt</b></a></td>
+      <td class="data">Replaced by registry support.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>GetProfileSection</b></a></td>
+      <td class="data">Replaced by registry support.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>GetProfileString</b></a></td>
+      <td class="data">Replaced by registry support.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>GetSysModalWindow</b></a></td>
+      <td class="data">The new input model does not support system modal
+        windows.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>GetTextExtentPoint</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/gdi/fontext_8smq.asp"><b>GetTextExtentPoint32</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>GetWindowTask</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/winui/winui/windowsuserinterface/windowing/windows/windowreference/windowfunctions/getwindowthreadprocessid.asp"><b>GetWindowThreadProcessId</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>GetWindowWord</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/winui/winui/windowsuserinterface/windowing/windowclasses/windowclassreference/windowclassfunctions/getwindowlong.asp"><b>GetWindowLong</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>GlobalCompact</b></a></td>
+      <td class="data">Not necessary and has no effect.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>GlobalFix</b></a></td>
+      <td class="data">Not necessary and has no effect.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>GlobalFlags</b></a></td>
+      <td class="data">Not necessary and has no effect.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>GlobalLRUNewest</b></a></td>
+      <td class="data">Not necessary and has no effect.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>GlobalLRUOldest</b></a></td>
+      <td class="data">Not necessary and has no effect.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>GlobalUnfix</b></a></td>
+      <td class="data">Not necessary and has no effect.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>GlobalUnWire</b></a></td>
+      <td class="data">Not necessary and has no effect.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>GlobalWire</b></a></td>
+      <td class="data">Not necessary and has no effect.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>IsBadHugeReadPtr</b></a></td>
+      <td class="data">Equivalent to the <a href="http://msdn.microsoft.com/library/en-us/memory/base/isbadreadptr.asp"><b>IsBadReadPtr</b></a>
+        function. There is only one memory model.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>IsBadHugeWritePtr</b></a></td>
+      <td class="data">Equivalent to the <a href="http://msdn.microsoft.com/library/en-us/memory/base/isbadwriteptr.asp"><b>IsBadWritePtr</b></a>
+        function. There is only one memory model.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>LimitEmsPages</b></a></td>
+      <td class="data">Not necessary and has no effect.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>LoadModule</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/dllproc/base/createprocess.asp"><b>CreateProcess</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>LocalCompact</b></a></td>
+      <td class="data">Not necessary and has no effect.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>LocalFlags</b></a></td>
+      <td class="data">Not necessary and has no effect.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>LocalShrink</b></a></td>
+      <td class="data">Not necessary and has no effect.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>LockSegment</b></a></td>
+      <td class="data">Not necessary and has no effect.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>LZDone</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/fileio/base/lzcopy.asp"><b>LZCopy</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>LZStart</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/fileio/base/lzcopy.asp"><b>LZCopy</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>MakeProcInstance</b></a></td>
+      <td class="data">Not necessary and has no effect. Windows can call entry
+        points directly.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>OemToAnsi</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/winui/winui/windowsuserinterface/resources/strings/stringreference/stringfunctions/oemtochar.asp"><b>OemToChar</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>OemToAnsiBuff</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/winui/winui/windowsuserinterface/resources/strings/stringreference/stringfunctions/oemtocharbuff.asp"><b>OemToCharBuff</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>OpenFile</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/fileio/base/createfile.asp"><b>CreateFile</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>PlayMetaFile</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/gdi/metafile_7hwl.asp"><b>PlayEnhMetaFile</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>PlayMetaFileRecord</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/gdi/metafile_6pyc.asp"><b>PlayEnhMetaFileRecord</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>PostAppMessage</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/winui/winui/windowsuserinterface/windowing/messagesandmessagequeues/messagesandmessagequeuesreference/messagesandmessagequeuesfunctions/postthreadmessage.asp"><b>PostThreadMessage</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>PrinterMessageBox</b></a></td>
+      <td class="data">Not necessary and has no effect.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>RegCreateKey</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/sysinfo/base/regcreatekeyex.asp"><b>RegCreateKeyEx</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>RegEnumKey</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/sysinfo/base/regenumkeyex.asp"><b>RegEnumKeyEx</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>RegOpenKey</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/sysinfo/base/regopenkeyex.asp"><b>RegOpenKeyEx</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>RegQueryValue</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/sysinfo/base/regqueryvalueex.asp"><b>RegQueryValueEx</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>RegSetValue</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/sysinfo/base/regsetvalueex.asp"><b>RegSetValueEx</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>SetBitmapBits</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/gdi/bitmaps_0qk3.asp"><b>SetDIBits</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>SetClassWord</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/winui/winui/windowsuserinterface/windowing/windowclasses/windowclassreference/windowclassfunctions/setclasslong.asp"><b>SetClassLong</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>SetDebugErrorLevel</b></a></td>
+      <td class="data">Not necessary and has no effect.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>SetHandleCount</b></a></td>
+      <td class="data">Not necessary and has no effect. There is no explicit
+        file handle limit.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>SetMessageQueue</b></a></td>
+      <td class="data">Not necessary and has no effect. Message queues are
+        expanded as needed.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>SetMetaFileBitsEx</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/gdi/metafile_86b7.asp"><b>SetEnhMetaFileBits</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>SetSwapAreaSize</b></a></td>
+      <td class="data">Not necessary and has no effect.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>SetSysModalWindow</b></a></td>
+      <td class="data">Not necessary and has no effect.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>SetWindowsHook</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/winui/winui/windowsuserinterface/windowing/hooks/hookreference/hookfunctions/setwindowshookex.asp"><b>SetWindowsHookEx</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>SetWindowWord</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/winui/winui/windowsuserinterface/windowing/windowclasses/windowclassreference/windowclassfunctions/setwindowlong.asp"><b>SetWindowLong</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>UnhookWindowsHook</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/winui/winui/windowsuserinterface/windowing/hooks/hookreference/hookfunctions/unhookwindowshookex.asp"><b>UnhookWindowsHookEx</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>UnlockResource</b></a></td>
+      <td class="data">Not necessary and has no effect.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>UnlockSegment</b></a></td>
+      <td class="data">Not necessary and has no effect.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>WaitForPrinterChange</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/gdi/prntspol_9sxa.asp"><b>FindFirstPrinterChangeNotification</b></a>,
+        <a href="http://msdn.microsoft.com/library/en-us/gdi/prntspol_9sxa.asp"><b>FindNextPrinterChangeNotification</b></a>,
+        and <a href="http://msdn.microsoft.com/library/en-us/gdi/prntspol_9sxa.asp"><b>FindClosePrinterChangeNotification</b></a>
+        functions.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>WinExec</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/dllproc/base/createprocess.asp"><b>CreateProcess</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>WNetAddConnection</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/wnet/wnet/wnetaddconnection2.asp"><b>WNetAddConnection2</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>WritePrivateProfileSection</b></a></td>
+      <td class="data">Replaced by registry support.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>WritePrivateProfileString</b></a></td>
+      <td class="data">Replaced by registry support.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>WritePrivateProfileStruct</b></a></td>
+      <td class="data">Replaced by registry support.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>WriteProfileSection</b></a></td>
+      <td class="data">Replaced by registry support.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>WriteProfileString</b></a></td>
+      <td class="data">Replaced by registry support.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>Yield</b></a></td>
+      <td class="data">Not necessary and has no effect. The message loop handles
+        synchronization.
+        <p>Threads that create processes can use <a href="http://msdn.microsoft.com/library/en-us/dllproc/base/waitforinputidle.asp"><b>WaitForInputIdle</b></a>
+        to wait until the new process has finished its initialization.</p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<h1><a name="winprog.deleted_windows_programming_elements"></a>Deleted Windows
+Programming Elements</h1>
+<p>The following table provides a list of functions and messages that were in
+the 16-bit Windows API but were not implemented in 32-bit Windows.</p>
+<p>&nbsp;
+<table class="data">
+  <tbody>
+    <tr class="data">
+      <th>16-bit Windows API</th>
+      <th>32-bit Windows support</th>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>AccessResource</b></a></td>
+      <td class="data">No equivalent.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>AllocDSToCSAlias</b></a></td>
+      <td class="data">No equivalent.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>AllocResource</b></a></td>
+      <td class="data">No equivalent.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>AllocSelector</b></a></td>
+      <td class="data">No equivalent.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>ChangeMenu</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/winui/winui/windowsuserinterface/resources/menus/menureference/menufunctions/appendmenu.asp"><b>AppendMenu</b></a>,
+        <a href="http://msdn.microsoft.com/library/en-us/winui/winui/windowsuserinterface/resources/menus/menureference/menufunctions/insertmenu.asp"><b>InsertMenu</b></a>,
+        <a href="http://msdn.microsoft.com/library/en-us/winui/winui/windowsuserinterface/resources/menus/menureference/menufunctions/modifymenu.asp"><b>ModifyMenu</b></a>,
+        and <a href="http://msdn.microsoft.com/library/en-us/winui/winui/windowsuserinterface/resources/menus/menureference/menufunctions/removemenu.asp"><b>RemoveMenu</b></a>
+        functions.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>ChangeSelector</b></a></td>
+      <td class="data">No equivalent.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>CloseSound</b></a></td>
+      <td class="data">Replaced by multimedia sound support.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>CountVoiceNotes</b></a></td>
+      <td class="data">Replaced by multimedia sound support.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>DECLARE_HANDLE</b></a></td>
+      <td class="data">No equivalent.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>DeviceMode</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/gdi/prntspol_7k1f.asp"><b>DocumentProperties</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>DlgDirSelect</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/shellcc/platform/commctls/listboxes/listboxreference/listboxfunctions/dlgdirselectex.asp"><b>DlgDirSelectEx</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>DlgDirSelectComboBox</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/shellcc/platform/commctls/comboboxes/comboboxreference/comboboxfunctions/dlgdirselectcomboboxex.asp"><b>DlgDirSelectComboBoxEx</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>DOS3Call</b></a></td>
+      <td class="data">Replaced by named, portable functions.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>ExtDeviceMode</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/gdi/prntspol_7k1f.asp"><b>DocumentProperties</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>FIELDOFFSET</b></a></td>
+      <td class="data">No equivalent.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>FlushComm</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/devio/base/purgecomm.asp"><b>PurgeComm</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>FreeSelector</b></a></td>
+      <td class="data">No equivalent.</td>
+    </tr>
+    <tr class="data">
+      <td class="data">GCW_HCURSOR</td>
+      <td class="data">Replaced by GCL_HCURSOR.</td>
+    </tr>
+    <tr class="data">
+      <td class="data">GCW_HBRBACKGROUND</td>
+      <td class="data">Replaced by GCL_HBRBACKGROUND.</td>
+    </tr>
+    <tr class="data">
+      <td class="data">GCW_HICON</td>
+      <td class="data">Replaced by GCL_HICON.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>GetAspectRatioFilter</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/gdi/fontext_4l6g.asp"><b>GetAspectRatioFilterEx</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>GetBitmapDimension</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/gdi/bitmaps_1l4o.asp"><b>GetBitmapDimensionEx</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>GetBrushOrg</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/gdi/brushes_4ks8.asp"><b>GetBrushOrgEx</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>GetCodeHandle</b></a></td>
+      <td class="data">No equivalent.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>GetCodeInfo</b></a></td>
+      <td class="data">No equivalent.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>GetCommError</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/devio/base/getcommstate.asp"><b>GetCommState</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>GetCurrentPDB</b></a></td>
+      <td class="data">No equivalent.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>GetCurrentPosition</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/gdi/cordspac_43aw.asp"><b>GetCurrentPositionEx</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>GetDCOrg</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/gdi/devcons_7m7s.asp"><b>GetDCOrgEx</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>GetDOSEnvironment</b></a></td>
+      <td class="data">No equivalent.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>GetEnvironment</b></a></td>
+      <td class="data">No equivalent.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>GetFreeSystemResources</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/memory/base/globalmemorystatus.asp"><b>GlobalMemoryStatus</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>GetInstanceData</b></a></td>
+      <td class="data">No equivalent; use an IPC mechanism.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>GetMetaFileBits</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/gdi/metafile_5kdv.asp"><b>GetEnhMetaFileBits</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>GetSystemDebugState</b></a></td>
+      <td class="data">No equivalent.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>GetTempDrive</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/fileio/base/gettemppath.asp"><b>GetTempPath</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>GetTextExtent</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/gdi/fontext_8smq.asp"><b>GetTextExtentPoint32</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>GetTextExtentEx</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/gdi/fontext_15kk.asp"><b>GetTextExtentExPoint</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>GetThresholdEvent</b></a></td>
+      <td class="data">Replaced by multimedia sound support.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>GetThresholdStatus</b></a></td>
+      <td class="data">Replaced by multimedia sound support.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>GetViewportExt</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/gdi/cordspac_3cmw.asp"><b>GetViewportExtEx</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>GetViewportOrg</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/gdi/cordspac_4fqw.asp"><b>GetViewportOrgEx</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>GetWindowExt</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/gdi/cordspac_21mg.asp"><b>GetWindowExtEx</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>GetWindowOrg</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/gdi/cordspac_34qg.asp"><b>GetWindowOrgEx</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>GetWinFlags</b></a></td>
+      <td class="data">No equivalent.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>GlobalDosAlloc</b></a></td>
+      <td class="data">No equivalent.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>GlobalDosFree</b></a></td>
+      <td class="data">No equivalent.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>GlobalNotify</b></a></td>
+      <td class="data">No equivalent.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>GlobalPageLock</b></a></td>
+      <td class="data">No equivalent.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>GlobalPageUnlock</b></a></td>
+      <td class="data">No equivalent.</td>
+    </tr>
+    <tr class="data">
+      <td class="data">GWW_HINSTANCE</td>
+      <td class="data">Replaced by GWL_HINSTANCE.</td>
+    </tr>
+    <tr class="data">
+      <td class="data">GWW_HWNDPARENT</td>
+      <td class="data">Replaced by GWL_HWNDPARENT.</td>
+    </tr>
+    <tr class="data">
+      <td class="data">GWW_ID</td>
+      <td class="data">Replaced by GWL_ID.</td>
+    </tr>
+    <tr class="data">
+      <td class="data">GWW_USERDATA</td>
+      <td class="data">Replaced by GWL_USERDATA.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>IsGDIObject</b></a></td>
+      <td class="data">No equivalent.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>LocalInit</b></a></td>
+      <td class="data">No equivalent.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>LocalNotify</b></a></td>
+      <td class="data">No equivalent.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>LockData</b></a></td>
+      <td class="data">No equivalent.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>LockInput</b></a></td>
+      <td class="data">No equivalent.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>MAKELP</b></a></td>
+      <td class="data">No equivalent.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>MAKEPOINT</b></a></td>
+      <td class="data">No equivalent.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>MoveTo</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/gdi/linecurv_4660.asp"><b>MoveToEx</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>OFFSETOF</b></a></td>
+      <td class="data">No equivalent.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>OffsetViewportOrg</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/gdi/cordspac_0rw8.asp"><b>OffsetViewportOrgEx</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>OffsetWindowOrg</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/gdi/cordspac_0y7s.asp"><b>OffsetWindowOrgEx</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>OpenComm</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/fileio/base/createfile.asp"><b>CreateFile</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>OpenSound</b></a></td>
+      <td class="data">Replaced by multimedia sound support.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>ProfClear</b></a></td>
+      <td class="data">No equivalent.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>ProfFinish</b></a></td>
+      <td class="data">No equivalent.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>ProfFlush</b></a></td>
+      <td class="data">No equivalent.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>ProfInsChk</b></a></td>
+      <td class="data">No equivalent.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>ProfSampRate</b></a></td>
+      <td class="data">No equivalent.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>ProfSetup</b></a></td>
+      <td class="data">No equivalent.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>ProfStart</b></a></td>
+      <td class="data">No equivalent.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>ProfStop</b></a></td>
+      <td class="data">No equivalent.</td>
+    </tr>
+    <tr class="data">
+      <td class="data">READ</td>
+      <td class="data">Replaced by OF_READ.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>ReadComm</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/fileio/base/readfile.asp"><b>ReadFile</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data">READ_WRITE</td>
+      <td class="data">Replaced by OF_READ_WRITE.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>ScaleViewportExt</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/gdi/cordspac_9tmg.asp"><b>ScaleViewportExtEx</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>ScaleWindowExt</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/gdi/cordspac_1q60.asp"><b>ScaleWindowExtEx</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>SEGINFO</b></a></td>
+      <td class="data">No equivalent.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>SELECTOROF</b></a></td>
+      <td class="data">No equivalent.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>SetBitmapDimension</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/gdi/bitmaps_89q0.asp"><b>SetBitmapDimensionEx</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>SetCommEventMask</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/devio/base/setcommmask.asp"><b>SetCommMask</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>SetEnvironment</b></a></td>
+      <td class="data">No equivalent.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>SetMetaFileBits</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/gdi/metafile_86b7.asp"><b>SetEnhMetaFileBits</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>SetResourceHandler</b></a></td>
+      <td class="data">No equivalent.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>SetSoundNoise</b></a></td>
+      <td class="data">Replaced by multimedia sound support.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>SetViewportExt</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/gdi/cordspac_57w8.asp"><b>SetViewportExtEx</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>SetViewportOrg</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/gdi/cordspac_6b08.asp"><b>SetViewportOrgEx</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>SetVoiceAccent</b></a></td>
+      <td class="data">Replaced by multimedia sound support.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>SetVoiceEnvelope</b></a></td>
+      <td class="data">Replaced by multimedia sound support.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>SetVoiceNote</b></a></td>
+      <td class="data">Replaced by multimedia sound support.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>SetVoiceQueueSize</b></a></td>
+      <td class="data">Replaced by multimedia sound support.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>SetVoiceSound</b></a></td>
+      <td class="data">Replaced by multimedia sound support.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>SetVoiceThreshold</b></a></td>
+      <td class="data">Replaced by multimedia sound support.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>SetWindowExt</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/gdi/cordspac_6i7s.asp"><b>SetWindowExtEx</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>SetWindowOrg</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/gdi/cordspac_7lbs.asp"><b>SetWindowOrgEx</b></a>
+        function.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>StartSound</b></a></td>
+      <td class="data">Replaced by multimedia sound support.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>StopSound</b></a></td>
+      <td class="data">Replaced by multimedia sound support.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>SwitchStackBack</b></a></td>
+      <td class="data">No equivalent.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>SwitchStackTo</b></a></td>
+      <td class="data">No equivalent.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>SyncAllVoices</b></a></td>
+      <td class="data">Replaced by multimedia sound support.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>UngetCommChar</b></a></td>
+      <td class="data">No equivalent.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>UnlockData</b></a></td>
+      <td class="data">No equivalent.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>ValidateCodeSegments</b></a></td>
+      <td class="data">No equivalent.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>ValidateFreeSpaces</b></a></td>
+      <td class="data">No equivalent.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>WaitSoundState</b></a></td>
+      <td class="data">Replaced by multimedia sound support.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a>WM_CTLCOLOR</a></td>
+      <td class="data">Replaced by the following messages:<br>
+        <a href="http://msdn.microsoft.com/library/en-us/shellcc/platform/commctls/buttons/buttonreference/buttonmessages/wm_ctlcolorbtn.asp">WM_CTLCOLORBTN</a><br>
+        <a href="http://msdn.microsoft.com/library/en-us/winui/winui/windowsuserinterface/windowing/dialogboxes/dialogboxreference/dialogboxmessages/wm_ctlcolordlg.asp">WM_CTLCOLORDLG</a><br>
+        <a href="http://msdn.microsoft.com/library/en-us/shellcc/platform/commctls/editcontrols/editcontrolreference/editcontrolmessages/wm_ctlcoloredit.asp">WM_CTLCOLOREDIT</a><br>
+        <a href="http://msdn.microsoft.com/library/en-us/shellcc/platform/commctls/listboxes/listboxreference/listboxmessages/wm_ctlcolorlistbox.asp">WM_CTLCOLORLISTBOX</a><br>
+        <a href="http://msdn.microsoft.com/library/en-us/shellcc/platform/commctls/scrollbars/scrollbarreference/scrollbarmessages/wm_ctlcolorscrollbar.asp">WM_CTLCOLORSCROLLBAR</a><br>
+        <a href="http://msdn.microsoft.com/library/en-us/shellcc/platform/commctls/staticcontrols/staticcontrolreference/staticcontrolmessages/wm_ctlcolorstatic.asp">WM_CTLCOLORSTATIC</a></td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>WM_CTLCOLORMSGBOX</b></a></td>
+      <td class="data"></td>
+    </tr>
+    <tr class="data">
+      <td class="data">WRITE</td>
+      <td class="data">Replaced by OF_WRITE.</td>
+    </tr>
+    <tr class="data">
+      <td class="data"><a><b>WriteComm</b></a></td>
+      <td class="data">Replaced by the <a href="http://msdn.microsoft.com/library/en-us/fileio/base/writefile.asp"><b>WriteFile</b></a>
+        function.</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+
+</body>
+
+</html>
