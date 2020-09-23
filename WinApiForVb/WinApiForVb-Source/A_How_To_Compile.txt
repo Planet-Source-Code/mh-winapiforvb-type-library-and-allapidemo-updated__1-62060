@@ -1,0 +1,27 @@
+<<Using VC++6.0>>
+
+1) Create an empty Win32 Dll project
+
+2) Add the odl and inc files to project.
+
+3) Go to project settings
+
+4) In the left pane, select the WinApiForVb.odl and in the right pane select the MIDL tab, then check "Suppress startup banner" and "MkTypLib Compatible", Enter "_DEBUG" in "Preprocessor defenitions" field
+
+5) In the right pane, check "use custom build step" under General tab
+
+6) For Description Enter: Performing Custom Build Step on $(InputPath)
+
+7) For Commands Enter: mktyplib WinApiForVb.odl /tlb "Debug\WinApiForVb.tlb"
+
+8) For outputs Enter: Debug\WinApiForVb.tlb
+
+9) Click Ok and Build (F7)
+
+10) Place tlb in system dir and open a Demo project, goto references
+	Select "Browse", find WinApiForVb.tlb, select it (bychecking it)
+	and click ok. Open up "object browser" and take a look at what is available
+
+<<Using MIDL tool>>
+
+Command to build tlb: midl mktyplib WinApiForVb.odl /tlb
